@@ -4,6 +4,81 @@
   
     
     <entry>
+      <title>计算机组成原理学习笔记01：系统概论及发展应用</title>
+      <link href="/2023/11/19/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B%EF%BC%9A%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(01)/"/>
+      <url>/2023/11/19/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B%EF%BC%9A%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(01)/</url>
+      
+        <content type="html"><![CDATA[<p>学习计算机组成原理是基础，可以帮助我们对计算机有一个整体的认识，也是计算机其他课程的前提。</p><h3 id="计算机系统概论"><a href="#计算机系统概论" class="headerlink" title="计算机系统概论"></a>计算机系统概论</h3><p><img src="/20231119172332.png"></p><h4 id="计算机系统简介"><a href="#计算机系统简介" class="headerlink" title="计算机系统简介"></a>计算机系统简介</h4><ul><li>由软件和硬件组成； </li><li>软件：系统软件 （操作系统，编译器等）+ 应用软件</li><li>计算机组成和体系结构的区别<ul><li>体系结构是对各种属性的一种抽象，面向程序员，研究指令系统，数据类型，寻址技术，I&#x2F;O机理等（例如，研究有无乘法指令）；</li><li>计算机组成是对上述属性进行实现；</li></ul></li></ul><h4 id="计算机的基本组成"><a href="#计算机的基本组成" class="headerlink" title="计算机的基本组成"></a>计算机的基本组成</h4><ul><li><p>冯诺依曼组成原理</p><ul><li><p>计算机由运算器，存储器，控制器，输入输出设备五大部分，运算器和控制器统称中央处理器；</p></li><li><p>指令由操作码和操作数组成；</p></li><li><p>以运算器为中心，现代计算机已经转变为以存储器为中心；</p><img src="20231119173921.png" style="zoom:50%;" /></li></ul></li><li><p>计算的工作步骤</p><ul><li>上机前准备：建立数学模型，确定计算方法，编制解题程序（由0和1组成）</li><li>工作过程：由存储器，运算器和控制器三部分组成指令的执行过程；<ul><li>存储器的基本组成：存储体-存储单元-存储元件；MDR存储数据寄存器，反映存储字长，MAR存储器地址寄存器，反映存储单元的个数；存储字长等于MDR，存储单元个数等于2的MAR次方。</li><li>运算器的基本组成：ACC（Accumulator)累加器，MQ（Multiplier-Quotient Register)乘商寄存器，X操作数寄存器，ALU算数逻辑单元；</li><li>控制器的基本组成：取指令PC（Program Counter，程序计数器)，分析指令IR(Instruction Register，指令寄存器)，执行指令(Control Unit,控制单元)CU；</li></ul></li></ul></li><li><p>计算机硬件的主要技术指标</p><ul><li>机器字长：CPU可以一次处理数据的位数，通常与CPU寄存器有关；</li><li>运算速度：主频，核数，MIPS（每秒执行的百万条指令） FLOPS（每秒浮点运算次数）</li><li>存储容量：主存容量和辅存容量，均使用字节表示，一个字节等于8位；</li></ul></li></ul><h3 id="计算机的发展及应用"><a href="#计算机的发展及应用" class="headerlink" title="计算机的发展及应用"></a>计算机的发展及应用</h3><h4 id="发展史"><a href="#发展史" class="headerlink" title="发展史"></a>发展史</h4><ul><li>世界上第一台电子计算机ENIAC（1946）</li><li>摩尔定律：微芯片上集成的晶体管数每三年翻两番；</li></ul><h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><ul><li>科学计算和数据处理</li><li>工业控制和实时控制</li><li>网络技术</li><li>展望<ul><li>未来可以用光子取代电子进行存储等。</li></ul></li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本篇是计算机组成原理的开端，是一些基本的概念，了解即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论课程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机组成原理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C学习笔记01：计算</title>
+      <link href="/2023/11/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(02)%20/"/>
+      <url>/2023/11/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(02)%20/</url>
+      
+        <content type="html"><![CDATA[<p>有过对C语言有整体的了解之后，下面咱们就一起了解下C语言的变量相关内容吧。</p><span id="more"></span><h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ul><li><p>变量作用：用于存放数据，变量的命名只能以字母，数字和下划线组成，数字不能放在第一个位置，关键词不能定义成变量名称；</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> price;</span><br><span class="line"><span class="type">int</span> price1,price2;     <span class="comment">//定义多个变量</span></span><br><span class="line"><span class="type">int</span> price1 = <span class="number">10</span>,price2 = <span class="number">100</span>;    <span class="comment">//定义多个变量并赋值</span></span><br><span class="line"><span class="type">int</span> <span class="number">3</span>price;           <span class="comment">//编译会报错，如下所示</span></span><br></pre></td></tr></table></figure><p><img src="/20231119142548.png"></p></li><li><p>变量在使用之前需要初始化一次；</p></li><li><p>变量的类型及其所占空间的大小</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> <span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line"> &#123;</span><br><span class="line"><span class="type">int</span> a1;</span><br><span class="line"><span class="type">char</span> a2;</span><br><span class="line"><span class="type">short</span> a3;</span><br><span class="line"><span class="type">long</span> a4;</span><br><span class="line"><span class="type">long</span> <span class="type">long</span> a5;</span><br><span class="line"><span class="type">float</span> a6;</span><br><span class="line"> <span class="type">double</span> a7;</span><br><span class="line"><span class="type">long</span> <span class="type">double</span> a8;</span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">&quot;int=%d,char=%d,short=%d,long=%d,long long=%d,float=%d,double=%d,long double=%d    \n&quot;</span>,<span class="keyword">sizeof</span>(a1),<span class="keyword">sizeof</span>(a2),<span class="keyword">sizeof</span>(a3),<span class="keyword">sizeof</span>(a4),<span class="keyword">sizeof</span>(a5),<span class="keyword">sizeof</span>(a6),<span class="keyword">sizeof</span>(a7),<span class="keyword">sizeof</span>(a8));</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="/20231119145035.png"></p><p>注：单位是字节，一个字节等于8位，可以表示0-256个数据；</p></li><li><p>程序编写中如何输入，采用scanf函数，具体说明如下：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">scanf</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"><span class="comment">//eg:</span></span><br><span class="line"><span class="type">int</span> size;</span><br><span class="line"> size = <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;a1,&amp;a2); <span class="comment">//遇到回车结束，在a1 a2中间需要加上空格</span></span><br><span class="line"> size = <span class="built_in">scanf</span>(<span class="string">&quot;%c%c&quot;</span>,&amp;a1,&amp;a2); <span class="comment">//遇到回车或者换行结束，在a1 a2中间不需要加上空格</span></span><br><span class="line"><span class="comment">//size = 2,则读入正确</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">%d: 读取一个整数。</span></span><br><span class="line"><span class="comment">%f: 读取一个单精度浮点数。</span></span><br><span class="line"><span class="comment">%lf: 读取一个双精度浮点数。</span></span><br><span class="line"><span class="comment">%c: 读取一个字符。</span></span><br><span class="line"><span class="comment">%s: 读取一个字符串。</span></span><br><span class="line"><span class="comment">%x 或 %X: 读取一个十六进制整数。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure><p>注意以下几点：</p><ul><li><p>如果在格式控制字符串中除了格式声明以外，还有其他的字符，那么在输入时你也必须输入；</p></li><li><p>输入是以行为单位，结束标志就是你按下了回车键；</p></li><li><p>在输入整数时，最好要有对应的空格，但是在输入一个字符时，不需要有空格；</p></li><li><p>在输入时遇到文件结束符（EOF），换行符或空格（针对格式控制字符不包含空格和换行），指定最大字符数；</p></li><li><p>scanf函数在成功读取数据之后，会返回一个变量，如果这个变量的数值等于要输入数据的个数，那么就是成功读入，否则代表在读入时发生了错误；</p></li></ul></li><li><p>常量：可以用来代替变量，const修饰符进行修饰，表示这个数值一旦初始化，就不能再更改，const 定义的字符一般大写。</p></li></ul><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><ul><li><p>两个整数的运算结果只能是整数；</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;result = %d\n&quot;</span>,<span class="number">10</span>/<span class="number">3</span>*<span class="number">3</span>);    <span class="comment">//result = 9</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;result = %f\n&quot;</span>,<span class="number">10.0</span>/<span class="number">3</span>*<span class="number">3</span>);  <span class="comment">//result = 10</span></span><br></pre></td></tr></table></figure></li><li><p>10和10.0是完全不一样的，如果没有小数点则代表整数，如果有小数点，则整个计算按照浮点型计算；</p></li><li><p>单精度和双精度浮点数的区别：</p><ul><li>单精度：7位有效数字</li><li>双精度：15位有效数字</li></ul></li></ul><h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4><ul><li><p>运算符和算子</p><img src="20231119154810.png" style="zoom:25%;" /></li><li><p>在Linux中如何使用GDB调试工具查看程序中变量的数值</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gcc -g -o your_program your_program.c    <span class="comment">#生成带有调试信息的可执行程序</span></span><br><span class="line">gdb ./your_program    <span class="comment">#使用GDB执行程序</span></span><br><span class="line"><span class="built_in">break</span> main            <span class="comment">#打断点</span></span><br><span class="line">run                   <span class="comment">#运行</span></span><br><span class="line"><span class="built_in">print</span> your_var        <span class="comment">#查看数值</span></span><br><span class="line">x addr                <span class="comment">#查看地址空间内的内容</span></span><br><span class="line">info locals           <span class="comment">#显示断点处变量的内容</span></span><br><span class="line">step                  <span class="comment">#单步执行</span></span><br><span class="line"><span class="built_in">continue</span>              <span class="comment">#继续执行</span></span><br><span class="line">q                     <span class="comment">#退出GDB</span></span><br></pre></td></tr></table></figure></li><li><p>复合赋值运算符</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a++ <span class="comment">//递增 是a+1以前的数值</span></span><br><span class="line">--a  <span class="comment">//递减 是a-1以后的数值</span></span><br></pre></td></tr></table></figure><p>  变量在哪就是哪的数值；</p></li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本片记录了C语言中的变量，运算符相关知识，还记录了Linux中的GDB工具使用方法。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程语言 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C学习笔记01：程序设计与C语言</title>
+      <link href="/2023/11/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(01)/"/>
+      <url>/2023/11/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(01)/</url>
+      
+        <content type="html"><![CDATA[<p>学习C语言对于我来讲已经不止一次了，记得大学时为了参加比赛，从0自学C语言，再到研究生期间为了找工作，按照课本上的知识点，又从新过了一遍。这次我打算再从新过一遍，每一遍都会学到新的知识点，对C语言有更深的理解。整个学习过程是采用大学MOOC慕课的方式，我参考的是翁恺的C语言课程，据了解，网上一致反映讲的很好！</p><span id="more"></span><h3 id="程序设计与C语言"><a href="#程序设计与C语言" class="headerlink" title="程序设计与C语言"></a>程序设计与C语言</h3><h4 id="计算机和编程语言"><a href="#计算机和编程语言" class="headerlink" title="计算机和编程语言"></a>计算机和编程语言</h4><ul><li><p>编译执行和解释执行</p><p>使用编译器将源文件经过预处理，汇编，编译和链接生成目标文件的方式成为编译执行；编译型语言具有更加确定的运算性能。</p><p>采用解释器对源文件进行解释的方式称为解释执行，解释执行不需要处理所有文件行，可以一边解释，一边执行。解释型语言具有更好的计算能力。</p></li></ul><h4 id="C语言"><a href="#C语言" class="headerlink" title="C语言"></a>C语言</h4><ul><li><p>C语言的标准</p><p>C11 C99 ANSI C C17</p></li><li><p>C语言的发展</p><p>​1972年诞生于贝尔实验室；1978年有了C语言的第一个正式描述**K&amp;R the C **；1989年ANIS发布了C语言的标准；1999年发布C99，引入了一些新的特性；2011年发布C11标准；2018年发布C17标准。C语言发展于B语言，B语言发展于BCPL语言，BCPL语言发展于FORTRAN。</p></li></ul><h4 id="第一个程序"><a href="#第一个程序" class="headerlink" title="第一个程序"></a>第一个程序</h4><ul><li><p>如何理解GCC？</p><p>GCC全称GNU Compiler Collection，GUN编译器套件；是跨平台，支持多种语言的编译器套件，其中GNU全称GNU’s Not Unix是一个自由软件项目，项目意在创建一个类Unix的操作系统，允许用户自由的分享软件，包括GNU工具集（里面就包括<strong>GCC</strong>），宏语言和工具，基本命令，shell等，但后来其内核并没有广泛采用，而工具集被Linux采用，所以现在的Linux被称为GUN&#x2F;Linux。</p></li><li><p>Turbo C Visual C GCC他们三个都一样，都是编译器。</p></li><li><p>为啥main函数有的是int main, 有的是 void main？</p><ul><li>int main 规范推荐的书写方式，需要有return 返回值</li><li>void main 不需要return返回值，不推荐，理由是不符合C语言标准，编译器会发出警告，具有不清晰的退出状态，使得其他程序调用时不知道状态</li></ul></li><li><p>printf函数中的\r\n分别代表什么？</p><p>​\r表示回车，使光标回到起始位置； \n代表换行；</p></li></ul><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>​这篇主要记录了C语言的一些发展，编译器的名称，以及在编程中的一些基础知识。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程语言 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>C++学习笔记01：数据处理</title>
       <link href="/2023/11/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(01)/"/>
       <url>/2023/11/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(01)/</url>
