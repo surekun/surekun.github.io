@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>计算机组成原理学习笔记02：系统总线</title>
+      <link href="/2023/12/26/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B%EF%BC%9A%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(02)/"/>
+      <url>/2023/12/26/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B%EF%BC%9A%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(02)/</url>
+      
+        <content type="html"><![CDATA[<h3 id="系统总线"><a href="#系统总线" class="headerlink" title="系统总线"></a>系统总线</h3><h4 id="总线的基本概念"><a href="#总线的基本概念" class="headerlink" title="总线的基本概念"></a>总线的基本概念</h4><ul><li>总线是连接多个部件的信息传输线，是各个部件共享的传输介质。</li></ul><h4 id="总线的分类"><a href="#总线的分类" class="headerlink" title="总线的分类"></a>总线的分类</h4><ul><li>数据传送方式：并行传输（8位，16位，32位，64位）和串行传输总线；</li><li>使用范围：计算机总线，测控总线，网络通信总线等；</li><li>连接部件：<ul><li>片上总线：CPU内部寄存器与寄存器之间的连接线；</li><li>系统总线：CPU 存储 I&#x2F;O设备三者之间的信息传输线；<ul><li>总线传输信息不同：数据总线，地址总线（20根，2的20次方&#x3D;1M），控制总线；</li></ul></li><li>通信总线：<ul><li>传输方式：串行通信和并行通信；</li></ul></li></ul></li></ul><h4 id="总线的特性及性能指标"><a href="#总线的特性及性能指标" class="headerlink" title="总线的特性及性能指标"></a>总线的特性及性能指标</h4><ul><li>总线特性：机械特性，电气特性（信号的传递方向和有效的电平范围），功能特性（指每根传输线的功能），时间特性（信号时序图表示）。</li><li>总线性能指标：<ul><li>总线宽度：数据总线的根数；</li><li>总线带宽：总线的数据传输速率，单位时间内总线上传输数据的位数。MBps 如果工作频率为33MHz,宽度为32，则带宽为33 * （32&#x2F;8） &#x3D; 132 MBps.</li><li>时钟同步&#x2F;异步；总线复用，信号线数（地址+数据+控制），总线控制方式等。</li></ul></li><li>总线的标准<ul><li>IAS总线，又称AT总线</li><li>EISA总线，相比于IAS总线，它可以从CPU中分离了总线控制权；</li><li>VESA总线，局部总线；</li><li>PCI总线，可以解决上述三类总线低带宽的问题。具有高性能，支持突发工作方式，良好的兼容性，支持即插即用，支持多主设备能力，具有与处理器和存储子系统完全并行操作的能力；采用多路复用等等。</li><li>AGP总线</li><li>RS-232总线：高电平表示逻辑0，电压范围+3到+15.</li><li>USB总线：具有很强的连接能力，传输速率USB2.0可以到达480Mbps。</li></ul></li></ul><h4 id="总线结构"><a href="#总线结构" class="headerlink" title="总线结构"></a>总线结构</h4><ul><li>单总线结构，什么设备都在一条总线上</li><li>多总线结构：双总线，三总线，四总线（局部总线连接CPU与Cache,系统总线连接Cache与主存，高速总线连接Cache与其他高速设备，低速总线连接低速设备与高速总线）</li><li>总线结构举例： 传统的微机总线结构，VL-BUS局部总线结构（只适用于特定的CPU），PCI总线结构，多层PCI总线结构（PCI总线驱动能力不足时采用）</li></ul><img src="f56TIywNGRDiVAe.png" style="zoom:50%;" /><h4 id="总线的控制"><a href="#总线的控制" class="headerlink" title="总线的控制"></a>总线的控制</h4><p>主要包括判优控制和通信控制。</p><ul><li>总线判优控制：分为集中式和分布式两种，主要用于多个设备同事要用设备时，如何选择的问题。集中式是将选择权交给CPU，分布式是将选择权交给各个设备。<ul><li>集中式：链式查询（线路简单，靠近CPU的设备优先级高），计数器定时查询（增加设备地址线改变设备使用总线的优先级），独立请求方式（使用的线多）</li></ul></li><li>总线的通信控制：解决通信双方如何获知<strong>传输开始和传输结束</strong>的，以及双方如何协调于配合。<ul><li>总线周期：申请分配阶段 + 寻址阶段 + 传数阶段 + 结束阶段</li><li>四种方式：<ul><li>同步通信：双方由统一的时标控制数据传输；用于传输速度差不多的模块中</li><li>异步通信：采用应答方式（不互锁，半互锁，全互锁），异步串行通信传输速率用波特率衡量，表示单位时间内传输二进制数据的位数；</li><li>半同步通信：增加一个WAIT信号，采用插入时钟周期的措施来协调通信双方的配合问题。</li><li>分离式通信</li></ul></li></ul></li></ul><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>了解了总线的分类，一些特性指标，总线的控制方式，和在计算机系统中，总线的结构。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论课程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机组成原理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法刷题笔记05：合并两个有序的链表</title>
+      <link href="/2023/12/26/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B005/"/>
+      <url>/2023/12/26/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B005/</url>
+      
+        <content type="html"><![CDATA[<h4 id="合并两个有序的链表"><a href="#合并两个有序的链表" class="headerlink" title="合并两个有序的链表"></a>合并两个有序的链表</h4><p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p><img src="jS64aJgQB9Z8f3t.png" style="zoom: 50%;" /><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：l1 = [1,2,4], l2 = [1,3,4]</span><br><span class="line">输出：[1,1,2,3,4,4]</span><br></pre></td></tr></table></figure><h4 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h4><p><strong>暴力迭代法</strong></p><p>这种方法的思想是先申请一个对应数据类型的空间，用一个指针来指向这个空间，通过指针对这个新申请的空间进行初始化，再用另外一个指针指向这个指针，这么做的作用是可以直接返回ret。利用while循环，在循环内进行判断，使用tmp指针将这两个链表按照规则串起来。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct ListNode *next;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">struct</span> ListNode* <span class="title function_">mergeTwoLists</span><span class="params">(<span class="keyword">struct</span> ListNode* list1, <span class="keyword">struct</span> ListNode* list2)</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(!list1) <span class="keyword">return</span> list2;</span><br><span class="line">    <span class="keyword">if</span>(!list2) <span class="keyword">return</span> list1;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> * <span class="title">ret</span> =</span> (<span class="keyword">struct</span> ListNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> ListNode));</span><br><span class="line">    ret -&gt; next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">tmp</span>  =</span> ret; </span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(list1 &amp;&amp; list2)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(list1-&gt;val &gt;= list2-&gt;val )</span><br><span class="line">        &#123;</span><br><span class="line">            tmp-&gt;next = list2;</span><br><span class="line">            list2 = list2-&gt;next;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            tmp-&gt;next = list1;</span><br><span class="line">             list1 = list1-&gt;next;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        tmp = tmp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (list1)      tmp-&gt;next = list1;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (list2) tmp-&gt;next = list2;</span><br><span class="line">    <span class="keyword">return</span> ret-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注意：结构体内变量的使用采用<code>-&gt;</code>符号。判断指针不为空，可以直接将该变量写入到括号内。新申请的那个ret指针需要进行初始化赋值。</p><p><strong>递归的方法</strong></p><p>递归的核心就在于如果每一次需要做的操作都一样，那么就可以采用递归。这个程序的核心思想在于一次又一次再套娃一样，直到找到list1或list2为NULL，找到之后，就代表这个链表遍历结束，那么就开始从这个点返回，一层又一层。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* list1, ListNode* list2)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(list1 == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">           <span class="keyword">return</span> list2;</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span>(list2 == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">           <span class="keyword">return</span> list1;</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span>(list1-&gt;val &lt; list2 -&gt;val)&#123;</span><br><span class="line">           list1-&gt;next = <span class="built_in">mergeTwoLists</span>(list1-&gt;next,list2);</span><br><span class="line">           <span class="keyword">return</span> list1;</span><br><span class="line">       &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">           list2 -&gt;next = <span class="built_in">mergeTwoLists</span>(list1,list2-&gt;next);</span><br><span class="line">           <span class="keyword">return</span> list2;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>递归的方法使代码看起来比较巧妙，但是不易懂，另外一种方法看起来比较舒服。通过这个题目，也复习了动态分配内存，链表的操作，指针的操作等内容。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>C学习笔记09：指针与字符串（二）</title>
       <link href="/2023/12/26/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(09)/"/>
       <url>/2023/12/26/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(09)/</url>
