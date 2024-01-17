@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>C++学习笔记04：循环和关系表达式 | The Blog of SureKun</title><meta name="author" content="surekun"><meta name="copyright" content="surekun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在讨论完C++中变量的相关知识以后，从这篇开始，将讨论更加深入一点的内容，本篇将这着重讨论在程序语言中，使用非常频繁的循环和关系表达式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++学习笔记04：循环和关系表达式">
+<meta property="og:url" content="https://www.surekun.site/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(04)/index.html">
+<meta property="og:site_name" content="The Blog of SureKun">
+<meta property="og:description" content="在讨论完C++中变量的相关知识以后，从这篇开始，将讨论更加深入一点的内容，本篇将这着重讨论在程序语言中，使用非常频繁的循环和关系表达式。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.surekun.site/img/kun.jpg">
+<meta property="article:published_time" content="2023-11-16T15:51:03.786Z">
+<meta property="article:modified_time" content="2023-11-18T15:51:32.429Z">
+<meta property="article:author" content="surekun">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.surekun.site/img/kun.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.surekun.site/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(04)/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C++学习笔记04：循环和关系表达式',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-18 23:51:32'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/kun.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="The Blog of SureKun"><span class="site-name">The Blog of SureKun</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C++学习笔记04：循环和关系表达式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-16T15:51:03.786Z" title="发表于 2023-11-16 23:51:03">2023-11-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-18T15:51:32.429Z" title="更新于 2023-11-18 23:51:32">2023-11-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span id="" data-flag-title="C++学习笔记04：循环和关系表达式"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>在讨论完C++中变量的相关知识以后，从这篇开始，将讨论更加深入一点的内容，本篇将这着重讨论在程序语言中，使用非常频繁的循环和关系表达式。</p>
+<span id="more"></span>
+<h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><p>for循环是一种比较常见的循环结构，在我们对数组进行操作时，常常使用for循环使代码变得更加精简，for循环的基本结构定义如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (initialization; test-experssion; update-experssion)&#123;</span><br><span class="line">    body;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该定义主要完成以下部分：设置初始值、执行测试判断循环是否执行、执行循环体、更新用于测试的值。C++中的for循环其实和C语言差不多，只不过还是需要注意以下几点：</p>
+<ul>
+<li>更新表达式是在循环体执行完毕后操作的</li>
+<li>如果循环体包含多条程序语句，应使用括号将这几条语句包含在内</li>
+<li>在for语句的括号中，三个表达式使用分号进行分割，不是使用逗号</li>
+<li>可以在for循环的表达式中声明变量并且赋值，例如for(int i;i&lt;3;i++)</li>
+<li>在对初始值变量进行声明时，可以使用逗号同时声明两个或者多个</li>
+</ul>
+<h4 id="update-expression"><a href="#update-expression" class="headerlink" title="update-expression"></a>update-expression</h4><p>在for循环的更新语句中，首先要知道可以利用表示式中的++或者–修改其步长，也就是将不仅可以一次加1还可以一次加n，另外在该语句中++i和i++是两种不用的语句，只不过结果一样，i++是使用i当前值计算表达式，++i是先将i加1，然后再使用新值来计算表达式。最后前缀格式和后缀格式相比，其运算效率更高。</p>
+<h4 id="strcmp-函数"><a href="#strcmp-函数" class="headerlink" title="strcmp()函数"></a>strcmp()函数</h4><p>可以使用strcmp（str1,str2)函数来判断str1与str2是否相等，如果相等，则该函数返回false，如果不相等，则该返回值为true。也可以使用该函数对str1和str2进行排序，如果str1在str2的前面，则strcmp（str1,str2)&lt;0为true,反之为false。</p>
+<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><p>相比于for循环，while循环时没有初始化和更新部分的，它只有测试条件和循环体，这就意味着测试条件的变量需要提前声明，可以在循环体中，对循环变量进行操作。其定义的基本结构为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (test-expression)&#123;</span><br><span class="line">    body;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>while循环执行的顺序为，先判断test-expression中的条件是否满足，如果满足则返回true，反之false,只有在返回true的情况下，while循环才去执行循环体，循环体执行完毕后，再次对条件进行判断，如果条件不满足，返回false，则程序跳出while循环，执行下一条语句。<br>在设计循环时，应该采用下面的几条原则：</p>
+<ul>
+<li>指定循环的终止条件</li>
+<li>在首次测试之前初始化条件</li>
+<li>在条件被再次测试之前更新条件</li>
+</ul>
+<h3 id="do-while循环"><a href="#do-while循环" class="headerlink" title="do while循环"></a>do while循环</h3><p>do while循环属于出口条件循环，该循环先执行循环体，然后再判断循环条件，根据条件来决定是否下次还继续执行循环体，其定义的基本结构如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">   body;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> (test-expression)</span><br></pre></td></tr></table></figure>
+<h3 id="循环和文本输入"><a href="#循环和文本输入" class="headerlink" title="循环和文本输入"></a>循环和文本输入</h3><p>使用循环常用来完成对字符的输入和读取，可以使用cin对输入进行读取，但是cin对输入的空格没有回显，也就是会忽略空格，因此我们可以采用cin.get(char)进行补救。成员函数调用cin.get()返回下一个输入字符串-包括空格、换行符和制表符，因此可以这样使用它：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cin = cin.<span class="built_in">get</span>();</span><br></pre></td></tr></table></figure>
+<p>cin.get(char)成员函数调用通过返回转换成false的bool值来指出已经到达EOF，而cin.get()成员函数调用则通过返回EOF值来指出已经到达的EOF，EOF是在文件iostream中定义的。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本篇主要讨论了程序中几种循环方法的使用，对基本的定义和相关参数做了解释说明，还对循环文本输入做了简单介绍。下一篇将记录分支语句和逻辑运算符相关知识点。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.surekun.site">surekun</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.surekun.site/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(04)/">https://www.surekun.site/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(04)/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.surekun.site" target="_blank">The Blog of SureKun</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C/">C++</a></div><div class="post_share"><div class="social-share" data-image="/img/kun.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(05)/" title="C++学习笔记05：分支语句和逻辑运算符"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C++学习笔记05：分支语句和逻辑运算符</div></div></a></div><div class="next-post pull-right"><a href="/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(03)/" title="C++学习笔记03：复合类型（二）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C++学习笔记03：复合类型（二）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/11/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(01)/" title="C++学习笔记01：数据处理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-18</div><div class="title">C++学习笔记01：数据处理</div></div></a></div><div><a href="/2023/11/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(02)/" title="C++学习笔记02：复合类型（一）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-18</div><div class="title">C++学习笔记02：复合类型（一）</div></div></a></div><div><a href="/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(03)/" title="C++学习笔记03：复合类型（二）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-16</div><div class="title">C++学习笔记03：复合类型（二）</div></div></a></div><div><a href="/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(05)/" title="C++学习笔记05：分支语句和逻辑运算符"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-16</div><div class="title">C++学习笔记05：分支语句和逻辑运算符</div></div></a></div><div><a href="/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(06)/" title="C++学习笔记06：C++的编程模块"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-16</div><div class="title">C++学习笔记06：C++的编程模块</div></div></a></div><div><a href="/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(08)/" title="C++学习笔记08：内存模型和名称空间"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-16</div><div class="title">C++学习笔记08：内存模型和名称空间</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/kun.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">surekun</div><div class="author-info__description">本博客是意在记录自己在嵌入式领域的各种总结与方法</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/surekun" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.</span> <span class="toc-text">for循环</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#update-expression"><span class="toc-number">1.1.</span> <span class="toc-text">update-expression</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#strcmp-%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">strcmp()函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#while%E5%BE%AA%E7%8E%AF"><span class="toc-number">2.</span> <span class="toc-text">while循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#do-while%E5%BE%AA%E7%8E%AF"><span class="toc-number">3.</span> <span class="toc-text">do while循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E5%92%8C%E6%96%87%E6%9C%AC%E8%BE%93%E5%85%A5"><span class="toc-number">4.</span> <span class="toc-text">循环和文本输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/17/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/" title="C学习笔记12：程序结构">C学习笔记12：程序结构</a><time datetime="2024-01-16T16:34:13.696Z" title="发表于 2024-01-17 00:34:13">2024-01-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(11)/" title="C学习笔记11：链表">C学习笔记11：链表</a><time datetime="2024-01-09T14:37:22.312Z" title="发表于 2024-01-09 22:37:22">2024-01-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(10)/" title="C学习笔记10：结构类型">C学习笔记10：结构类型</a><time datetime="2023-12-27T13:53:04.932Z" title="发表于 2023-12-27 21:53:04">2023-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B%EF%BC%9A%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(02)/" title="计算机组成原理学习笔记02：系统总线">计算机组成原理学习笔记02：系统总线</a><time datetime="2023-12-26T13:33:13.530Z" title="发表于 2023-12-26 21:33:13">2023-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B005/" title="算法刷题笔记05：合并两个有序的链表">算法刷题笔记05：合并两个有序的链表</a><time datetime="2023-12-26T11:30:17.419Z" title="发表于 2023-12-26 19:30:17">2023-12-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By surekun</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://vercel-dun-mu.vercel.app/',
+      region: 'ap-beijing',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(init)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://vercel-dun-mu.vercel.app/',
+      region: 'ap-beijing',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+      
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

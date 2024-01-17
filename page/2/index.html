@@ -1,0 +1,366 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>The Blog of SureKun - 嵌入式领域全栈技术博客</title><meta name="author" content="surekun"><meta name="copyright" content="surekun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本博客是意在记录自己在嵌入式领域的各种总结与方法">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Blog of SureKun">
+<meta property="og:url" content="https://www.surekun.site/page/2/index.html">
+<meta property="og:site_name" content="The Blog of SureKun">
+<meta property="og:description" content="本博客是意在记录自己在嵌入式领域的各种总结与方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.surekun.site/img/kun.jpg">
+<meta property="article:author" content="surekun">
+<meta property="article:tag" content="嵌入式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.surekun.site/img/kun.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.surekun.site/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'The Blog of SureKun',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-01-17 20:27:47'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/kun.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="The Blog of SureKun"><span class="site-name">The Blog of SureKun</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">The Blog of SureKun</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/surekun" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/28/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(05)/" title="C学习笔记05：循环控制">C学习笔记05：循环控制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-28T15:53:18.826Z" title="发表于 2023-11-28 23:53:18">2023-11-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C</a></span></div><div class="content">本章咱们继续学习C语言中有关循环控制的知识点。
+循环控制循环控制
+break 在循环中跳出循环；注意对于多重循环，break只能跳出所在层的循环，如果要跳出嵌套的循环，可以使用接力break;
+
+continue 跳过循环的这一轮剩下的语句，进入下一轮；
+
+
+多重循环
+循环里面可以嵌套循环
+
+goto的使用
+1234567&#123;    /*code 1 */	goto out     /*code 2*/&#125;out:	/*code 3*/
+
+
+goto可以代替接力brea语句，跳出嵌套循环，其后面接一个标识符，在程序的后面，可以采用冒号的形式书写对应的程序，从内测跳到最外侧，其他情况，不建议使用。
+
+goto破坏了程序的结构性，难查错，使得程序的逻辑顺序显得较为混乱，并且会使程序更加难懂；
+
+
+
+
+循环应用
+前N项求和$$f(n) &#x3D; 1-1&#x2F;2 + 1&#x2F;3 -1&#x2F;4 + …+1&#x2F;n$$
+1234567891011121314#include &lt;stdio.h&gt;int main()&#123;    int n ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/23/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B003/" title="算法刷题笔记03：最长公共前缀">算法刷题笔记03：最长公共前缀</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-23T15:48:16.401Z" title="发表于 2023-11-23 23:48:16">2023-11-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">最长公共前缀编写一个函数来查找字符串数组中的最长公共前缀。
+如果不存在公共前缀，返回空字符串 &quot;&quot;。
+示例 ：
+12345输入：strs = [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]输出：&quot;fl&quot;输入：strs = [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]输出：&quot;&quot;解释：输入不存在公共前缀。
+
+解题方法**横向扫描法: **
+这个方法的思路就是对要比较的字符串进行横向的扫描，所谓横向的扫描就是从开始执行两个字符串的比较，如果有公共部分，则记录，之后再利用这个公共部分去和下一个字符串进行比较，如果有公共部分，则更新其结果，当最后比较结束后，返回这个一直记录公共部分的字符串。
+12345678910111213141516171819202122232425262728class Solution &#123;public:    string longestCommonPrefix(vecto ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/22/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(04)/" title="C学习笔记03：判断与循环(下)">C学习笔记03：判断与循环(下)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-22T12:50:17.052Z" title="发表于 2023-11-22 20:50:17">2023-11-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C</a></span></div><div class="content">本章咱们继续学习C语言中判断和循环的语法。
+判断与循环逻辑类型和运算
+bool类型，需要包含 #include&lt;stdbool.h&gt;；
+
+逻辑运算：结果只有0和1，运算符有 ! &amp;&amp; || ， 优先级比赋值运算高；
+
+条件运算符：
+1count = (count &gt; 20) ? count - 10:count +10;  //count - 10为条件满足时的值
+
+逗号运算：用于连接两个表达式，主要在for循环中使用；
+
+
+级联和嵌套的判断
+嵌套if else, else总是和最近的if进行匹配；
+在if else后面要加上大括号；
+级联的if else
+
+多路分支
+switch case : 如果没有对用的case，就去执行defualt对应的语句；
+
+控制表达式switch(控制表达式）对应的只能时整数类型的，case要对应常数；
+
+break可以结束switch语句；
+12345678910switch(type)&#123;    case 1:    case 2:        /*code*/        break;    defa ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/21/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B002/" title="算法刷题笔记02：判断回文数">算法刷题笔记02：判断回文数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-20T16:36:33.719Z" title="发表于 2023-11-21 00:36:33">2023-11-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">判断回文数给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
+回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+
+例如，121 是回文，而 123 不是。
+
+示例 ：
+12345输入：x = 121输出：true输入：x = -121输出：false解释：从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数
+
+解题方法**字符串法: **
+字符串法就是要将输入的整数首先转换成字符串，之后从首尾开始比较转换之后的字符，如果相等，则继续比较，如果不相等，则返回false,直到字符比较个数进行一半结束，对应的代码如下：
+12345678910111213141516171819202122#include &lt;string.h&gt;bool isPalindrome(int x) &#123;    char str[20];              // 大致足够存储整数的字符串表示    sprintf(str, &quot;%d&quot;, x);     //整形转换成字符型    int  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(03)/" title="C学习笔记03：判断与循环(一)">C学习笔记03：判断与循环(一)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-20T12:45:15.437Z" title="发表于 2023-11-20 20:45:15">2023-11-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C</a></span></div><div class="content">本章主要复习C语言中常用的判断和循环语句。
+判断与循环判断
+if语句
+
+六种关系运算符：&#x3D;&#x3D; !&#x3D; &gt; &lt; &gt;&#x3D; &lt;&#x3D;，关系运算符的结果只会是0和1；所以关系运算符的优先级比算术运算的低，但是比赋值运算高，&#x3D;&#x3D; !&#x3D;比其他低，&gt; &lt;是从左到右。
+
+if else语句在使用过程中要使用中括号括起来，否则只会执行紧邻的第一条语句；
+
+几个具有迷惑性的题目
+123456if(1&lt;=n&lt;=10)   //可以通过编译//2int i,j,k;i=2,j=3;k=i*j==6;   //i*j先进行等于6，之后进行==,结果只能是0或者1printf(&quot;%d\n&quot;,k);    //输出为1
+
+&#x2F;**&#x2F;会被编译器替换，为什么？会替换成什么？
+给程序员看的注释，在程序中，编译器会忽略，不会替换成任何。
+
+
+循环
+while do while for
+
+
+for循环是先执行判断，还是先进行自加？先进行判断条件再执行迭代表达式；
+
+对于 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/19/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B001/" title="算法刷题笔记01：两数之和">算法刷题笔记01：两数之和</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-19T15:36:10.283Z" title="发表于 2023-11-19 23:36:10">2023-11-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">两数之和给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
+你可以按任意顺序返回答案。
+示例 ：
+123输入：nums = [2,7,11,15], target = 9输出：[0,1]解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
+
+
+
+解题方法**暴力求解: **
+思路就是对num数组内的数据进行两次遍历，通过两次的遍历，查找两次遍历的结果是否与target数值相等，在程序上实现就是采用两个for循环，其时间复杂度位 O(n2)。需要注意的是在进行遍历时，i之前的不需要再次遍历，因为之前已经遍历比较过了，对应的代码如下：
+1234567891011121314151617class Solution &#123;public:   //vector&lt;int&gt;&amp; nums 引用    vector&lt;int&gt; twoSum(vector&lt ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/19/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B%EF%BC%9A%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(01)/" title="计算机组成原理学习笔记01：系统概论及发展应用">计算机组成原理学习笔记01：系统概论及发展应用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-19T09:17:23.088Z" title="发表于 2023-11-19 17:17:23">2023-11-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B/">理论课程</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">学习计算机组成原理是基础，可以帮助我们对计算机有一个整体的认识，也是计算机其他课程的前提。
+计算机系统概论
+计算机系统简介
+由软件和硬件组成； 
+软件：系统软件 （操作系统，编译器等）+ 应用软件
+计算机组成和体系结构的区别
+体系结构是对各种属性的一种抽象，面向程序员，研究指令系统，数据类型，寻址技术，I&#x2F;O机理等（例如，研究有无乘法指令）；
+计算机组成是对上述属性进行实现；
+
+
+
+计算机的基本组成
+冯诺依曼组成原理
+
+计算机由运算器，存储器，控制器，输入输出设备五大部分，运算器和控制器统称中央处理器；
+
+指令由操作码和操作数组成；
+
+以运算器为中心，现代计算机已经转变为以存储器为中心；
+
+
+
+计算的工作步骤
+
+上机前准备：建立数学模型，确定计算方法，编制解题程序（由0和1组成）
+工作过程：由存储器，运算器和控制器三部分组成指令的执行过程；
+存储器的基本组成：存储体-存储单元-存储元件；MDR存储数据寄存器，反映存储字长，MAR存储器地址寄存器，反映存储单元的个数；存储字长等于MDR，存储单元个数等于2的MAR次方。
+运算器的基本组成：ACC（Accumulator)累加器， ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(02)%20/" title="C学习笔记02：计算">C学习笔记02：计算</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-19T06:07:58.326Z" title="发表于 2023-11-19 14:07:58">2023-11-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C</a></span></div><div class="content">有过对C语言有整体的了解之后，下面咱们就一起了解下C语言的变量相关内容吧。
+
+
+计算变量
+变量作用：用于存放数据，变量的命名只能以字母，数字和下划线组成，数字不能放在第一个位置，关键词不能定义成变量名称；
+1234int price;int price1,price2;    			 //定义多个变量int price1 = 10,price2 = 100;    //定义多个变量并赋值int 3price;          			 //编译会报错，如下所示
+
+
+
+变量在使用之前需要初始化一次；
+
+变量的类型及其所占空间的大小
+123456789101112131415 #include &lt;stdlib.h&gt; #include &lt;stdio.h&gt; int main(void) &#123;	int a1;	char a2;	short a3;	long a4;	long long a5;	float a6; 	double a7;	long double a8;     printf(&quot;int=%d,char=%d,short=%d,long=%d, ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(01)/" title="C学习笔记01：程序设计与C语言">C学习笔记01：程序设计与C语言</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-19T02:38:17.862Z" title="发表于 2023-11-19 10:38:17">2023-11-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C</a></span></div><div class="content">学习C语言对于我来讲已经不止一次了，记得大学时为了参加比赛，从0自学C语言，再到研究生期间为了找工作，按照课本上的知识点，又从新过了一遍。这次我打算再从新过一遍，每一遍都会学到新的知识点，对C语言有更深的理解。整个学习过程是采用大学MOOC慕课的方式，我参考的是翁恺的C语言课程，据了解，网上一致反映讲的很好！
+
+
+程序设计与C语言计算机和编程语言
+编译执行和解释执行
+使用编译器将源文件经过预处理，汇编，编译和链接生成目标文件的方式成为编译执行；编译型语言具有更加确定的运算性能。
+采用解释器对源文件进行解释的方式称为解释执行，解释执行不需要处理所有文件行，可以一边解释，一边执行。解释型语言具有更好的计算能力。
+
+
+C语言
+C语言的标准
+C11 C99 ANSI C C17
+
+C语言的发展
+​	1972年诞生于贝尔实验室；1978年有了C语言的第一个正式描述**K&amp;R the C **；1989年ANIS发布了C语言的标准；1999年发布C99，引入了一些新的特性；2011年发布C11标准；2018年发布C17标准。C语言发展于B语言，B语言发展于BCPL语言，BCPL语言发展于F ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(01)/" title="C++学习笔记01：数据处理">C++学习笔记01：数据处理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-18T15:40:57.217Z" title="发表于 2023-11-18 23:40:57">2023-11-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C++</a></span></div><div class="content">从这篇笔记开始开始，我将用博客记录我的学习成果，一方面可以巩固这些内容，另外一方面可以为以后做参考。
+
+C++变量命名规则对于C++来讲，其变量命名和C大致相同，其中需要注意：
+
+名称的第一个字符不能是数字
+要区分大写字符和小写字符
+在名称中，只能采取字母字符、数字、和下划线
+对于变量的长度并没有限制，其命名方案也没有一定的要求，一般我们采用首字母大写
+
+关于整形数据的理解字节和位首先要知道位是组成字节的最小单位，可以把位理解成0和1，然而字节表示8位的内存单元，可以理解成8位组成一个字节。字节又是表示计算机内存量的存储单位，其中1KB&#x3D;1024字节。字节表示该变量在计算机内存空间大小，1个字节表示8位，其值为0-255或者-128到127。
+有符号整形主要包含int&#x2F;short&#x2F;long&#x2F;longlong,其中如果声明一个int的整形变量，则该变量占有计算机存储空间为4字节32位，其数值表示范围：-2147483648到2147483647；声明一个short整形变量将占有2个字节16位，其数值变化为：-32768到32767；声明一个long ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/kun.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">surekun</div><div class="author-info__description">本博客是意在记录自己在嵌入式领域的各种总结与方法</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/surekun" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/17/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/" title="C学习笔记12：程序结构">C学习笔记12：程序结构</a><time datetime="2024-01-16T16:34:13.696Z" title="发表于 2024-01-17 00:34:13">2024-01-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(11)/" title="C学习笔记11：链表">C学习笔记11：链表</a><time datetime="2024-01-09T14:37:22.312Z" title="发表于 2024-01-09 22:37:22">2024-01-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(10)/" title="C学习笔记10：结构类型">C学习笔记10：结构类型</a><time datetime="2023-12-27T13:53:04.932Z" title="发表于 2023-12-27 21:53:04">2023-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B%EF%BC%9A%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(02)/" title="计算机组成原理学习笔记02：系统总线">计算机组成原理学习笔记02：系统总线</a><time datetime="2023-12-26T13:33:13.530Z" title="发表于 2023-12-26 21:33:13">2023-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B005/" title="算法刷题笔记05：合并两个有序的链表">算法刷题笔记05：合并两个有序的链表</a><time datetime="2023-12-26T11:30:17.419Z" title="发表于 2023-12-26 19:30:17">2023-12-26</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">Linux应用开发</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E7%B3%BB%E7%BB%9F/"><span class="card-category-list-name">Linux系统</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/RTOS/"><span class="card-category-list-name">RTOS</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B/"><span class="card-category-list-name">理论课程</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">硬件开发</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">算法</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"><span class="card-category-list-name">编程语言</span><span class="card-category-list-count">24</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%A3%B8%E6%9C%BA%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">裸机开发</span><span class="card-category-list-count">8</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/PCB%E7%BB%98%E5%88%B6/" style="font-size: 1.1em; color: #999">PCB绘制</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.4em; color: #99a5b6">数据结构</a> <a href="/tags/C/" style="font-size: 1.5em; color: #99a9bf">C</a> <a href="/tags/Linux%E5%91%BD%E4%BB%A4/" style="font-size: 1.2em; color: #999da3">Linux命令</a> <a href="/tags/C/" style="font-size: 1.5em; color: #99a9bf">C++</a> <a href="/tags/%E4%B8%B2%E5%8F%A3%E5%B1%8F/" style="font-size: 1.2em; color: #999da3">串口屏</a> <a href="/tags/CPU%E6%B8%A9%E5%BA%A6/" style="font-size: 1.1em; color: #999">CPU温度</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 1.2em; color: #999da3">计算机组成原理</a> <a href="/tags/STM32/" style="font-size: 1.3em; color: #99a1ac">STM32</a> <a href="/tags/RT-Thread/" style="font-size: 1.1em; color: #999">RT-Thread</a> <a href="/tags/Prepar3D/" style="font-size: 1.2em; color: #999da3">Prepar3D</a> <a href="/tags/OpenMV/" style="font-size: 1.2em; color: #999da3">OpenMV</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><span class="card-archive-list-count">45</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">54</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-01-17T12:27:47.007Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By surekun</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["仰望星空，路在脚下"])
+  } else {
+    document.getElementById("subtitle").textContent = "仰望星空，路在脚下"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

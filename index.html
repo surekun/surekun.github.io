@@ -1,0 +1,388 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>The Blog of SureKun - 嵌入式领域全栈技术博客</title><meta name="author" content="surekun"><meta name="copyright" content="surekun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本博客是意在记录自己在嵌入式领域的各种总结与方法">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Blog of SureKun">
+<meta property="og:url" content="https://www.surekun.site/index.html">
+<meta property="og:site_name" content="The Blog of SureKun">
+<meta property="og:description" content="本博客是意在记录自己在嵌入式领域的各种总结与方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.surekun.site/img/kun.jpg">
+<meta property="article:author" content="surekun">
+<meta property="article:tag" content="嵌入式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.surekun.site/img/kun.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.surekun.site/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'The Blog of SureKun',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-01-17 20:27:47'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/kun.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="The Blog of SureKun"><span class="site-name">The Blog of SureKun</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">The Blog of SureKun</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/surekun" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/17/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/" title="C学习笔记12：程序结构">C学习笔记12：程序结构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-16T16:34:13.696Z" title="发表于 2024-01-17 00:34:13">2024-01-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C</a></span></div><div class="content">这篇介绍下C语言下常用的程序结构。
+程序结构全局变量
+定义在函数外面的变量是全局变量； 
+
+全局变量具有全局的生存期和作用域，他们与任何函数都无关，在任何函数内部都可以使用他们； 
+
+全局变量的初始化：
+
+没有做初始化的全局变量会是0，指针会是NULL；
+
+只能用编译时刻已知的值来初始化全局变量，如下是会发生错误的；
+12int gAll = 12;int g2 = gAll;  //complie error, Do not suggestion
+
+全局变量的初始化发生在main函数之前；
+
+
+
+如果函数内部存在与全局变量同名的变量，则全局变量被隐藏；
+
+静态本地变量：
+
+在本地变量定义时加上static修饰词成为静态本地变量；
+静态变量具有全局变量的生存期，在函数离开时，会继续保持其数值，在程序中，与全局变量存储在同一块区域； 
+静态本地变量的初始化只会有一次，后面如果函数再次进入，则这个变量会使用上次的数值；
+静态本地变量具有局部变量的作用域，是一种特殊的全局变量。
+
+
+*返回指针的函数：
+
+返回本地变量的地址是危险的，不建议使用，最好的方式是返回传入的指针；
+返回全局变量或静态 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(11)/" title="C学习笔记11：链表">C学习笔记11：链表</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-01-09T14:37:22.312Z" title="发表于 2024-01-09 22:37:22">2024-01-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C</a></span></div><div class="content">这篇介绍下C语言该如何使用。
+链表可变数组头文件如下：
+123456789101112131415 #ifndef _RESIZEARRAY_H_#define _RESIZEARRAY_H_typedef struct&#123;	int *array;	int size;&#125;Array;   Array array_create(int init_size);   //create a array with mallocvoid array_free(Array *a);           //free array memoryint array_size(const Array *a);      //get size of arrayint *array_at(Array *a,int index);   //get number of the indexint *array_inflate(Array *a, int more_size);  //expand array#endif
+
+源文件如下：
+123456789101112131415161718192021 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(10)/" title="C学习笔记10：结构类型">C学习笔记10：结构类型</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-27T13:53:04.932Z" title="发表于 2023-12-27 21:53:04">2023-12-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C</a></span></div><div class="content">这篇介绍下其他常用的结构类型。
+结构类型枚举
+枚举是一种用户定义的数据类型，它用关键字enum以下语法来声明：
+1enum 枚举类型名字 &#123;名字0，....名字n&#125;;
+
+枚举类型的名字通常不真的使用，要用的是大括号里的名字，因为他们就是常量符号，他们的类型是int,值则依次从0到n。
+1enum Color &#123;RED,YELLOW,GREEN&#125;l;   //RED = 0, GREEN = 2;
+
+枚举量可作为值，枚举类型可以跟上enum作为类型，但实际上是以整数来做内部计算和外部输入输出的。
+
+声明枚举量的时候可以指定值
+1enum color &#123;red=1,yellow,green=5&#125;;
+
+虽然枚举类型可以作为类型使用，但实际上不好用，如果有意义上排比的名字，用枚举比const int方便，枚举比宏好，因为枚举有int类型。
+
+
+结构1234567891011121314151617struct date &#123;    int month;    int day;    int year;&#125;;    // ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/26/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B%EF%BC%9A%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(02)/" title="计算机组成原理学习笔记02：系统总线">计算机组成原理学习笔记02：系统总线</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-26T13:33:13.530Z" title="发表于 2023-12-26 21:33:13">2023-12-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B/">理论课程</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a></span></div><div class="content">系统总线总线的基本概念
+总线是连接多个部件的信息传输线，是各个部件共享的传输介质。
+
+总线的分类
+数据传送方式：并行传输（8位，16位，32位，64位）和串行传输总线；
+使用范围：计算机总线，测控总线，网络通信总线等；
+连接部件：
+片上总线：CPU内部寄存器与寄存器之间的连接线；
+系统总线：CPU 存储 I&#x2F;O设备三者之间的信息传输线；
+总线传输信息不同：数据总线，地址总线（20根，2的20次方&#x3D;1M），控制总线；
+
+
+通信总线：
+传输方式：串行通信和并行通信；
+
+
+
+
+
+总线的特性及性能指标
+总线特性：机械特性，电气特性（信号的传递方向和有效的电平范围），功能特性（指每根传输线的功能），时间特性（信号时序图表示）。
+总线性能指标：
+总线宽度：数据总线的根数；
+总线带宽：总线的数据传输速率，单位时间内总线上传输数据的位数。MBps 如果工作频率为33MHz,宽度为32，则带宽为33 * （32&#x2F;8） &#x3D; 132 MBps.
+时钟同步&#x2F;异步；总线复用，信号线数（地址+数据+控制），总线控制方式等。
+
+
+总线的标准
+IAS总线，又称AT总线 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/26/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B005/" title="算法刷题笔记05：合并两个有序的链表">算法刷题笔记05：合并两个有序的链表</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-26T11:30:17.419Z" title="发表于 2023-12-26 19:30:17">2023-12-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">合并两个有序的链表将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
+
+
+
+
+12输入：l1 = [1,2,4], l2 = [1,3,4]输出：[1,1,2,3,4,4]
+
+解题方法暴力迭代法
+这种方法的思想是先申请一个对应数据类型的空间，用一个指针来指向这个空间，通过指针对这个新申请的空间进行初始化，再用另外一个指针指向这个指针，这么做的作用是可以直接返回ret。利用while循环，在循环内进行判断，使用tmp指针将这两个链表按照规则串起来。
+1234567891011121314151617181920212223242526272829303132/** * Definition for singly-linked list. * struct ListNode &#123; *     int val; *     struct ListNode *next; * &#125;; */struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* li ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/26/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(09)/" title="C学习笔记09：指针与字符串（二）">C学习笔记09：指针与字符串（二）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-26T02:49:56.549Z" title="发表于 2023-12-26 10:49:56">2023-12-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C</a></span></div><div class="content">这篇继续学习与指针相关的内容，遨游在指针的世界内。
+指针与字符串（二）指针的使用
+
+
+指针的应用场景：
+
+交换两个变量的值，函数返回多个值，某些值就只能通过指针返回，传入的参数实际上是需要保存带回结果的变量。
+函数返回运算的状态，结果通过指针返回，常用的套路就是让函数返回特殊的不属于有效范围内的值表示出错（-1和0）
+
+
+指针常见的错误：定义了指针变量，还没有指向任何变量，就开始使用指针（未初始化指针变量）；
+123int *p;int k = 12;*p = k;    //!这是错误的写法。
+
+传入函数的数组成为什么？  成了一个指针，但是可以用数组的运算符[]进行运算；数组变量是const的指针，所以不能被赋值，int b[] --&gt; int * const b。
+
+指针与const
+
+表示一旦得到了某个变量的地址，不能再指向其他变量
+12345678int *const q = &amp;i; // q is const*q = 26;  //okq ++; //error   --------------------------------const int *p =  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/13/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(08)/" title="C学习笔记09：指针与字符串">C学习笔记09：指针与字符串</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-13T12:55:31.621Z" title="发表于 2023-12-13 20:55:31">2023-12-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C</a></span></div><div class="content">这篇初步回忆一下有关字符串的相关内容，
+指针与字符串指针
+sizeof是一个运算符，给出某个类型或变量在内存中所占的字节数；在程序中，字节可以用英文Byte表示，1个字节等于8位，位使用Bit表示。
+
+&amp;是C语言的一个运算符，可以获得变量的地址，它的操作数必须是变量；在使用printf作为输出内容时，如果想输出地址，可以加上&quot;%p&quot;，就直接输出地址。
+12int i;printf(&quot;%p\n&quot;,&amp;i);
+
+&amp;取地址符号右侧必须是一个明确的变量，&amp;(i++)这种是不可以的。
+
+在C语言的内存模型中，对于变量的存储的栈空间，采用从顶向下的的存储方式；对于数组，以下表达方式是等价的,都是表达的数组的起始地址。
+123int i[10];printf(&quot;%p\n&quot;,&amp;i);printf(&quot;%p\n&quot;,i);
+
+指针就是保存地址的变量，定义和用法如下 ，指针可以作为一个参数，来传入子函数中，子函数就可以使用这个指针，访问外面的数值。
+1234int i;int* p = &am ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/04/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(07)/" title="C学习笔记07：数组运算">C学习笔记07：数组运算</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-04T12:21:13.757Z" title="发表于 2023-12-04 20:21:13">2023-12-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C</a></span></div><div class="content">这篇还是讲数组，数组的知识点很关键，冲杯咖啡，继续干！
+数组运算数组运算
+数组的集成初始化
+1234int a[] = &#123;2,4,6,7&#125;;int a[10] = &#123;    [0] = 2,[2] = 3,6,    //a[3] = 6; ,号不影响正确性&#125;
+
+
+直接用大括号给出数组的所有元素初始值，不需要给出数组的大小，编译器会替你数数。
+C99中还可以用[n]初始化数组中给出的定位，其他没有初始化的为0，特别适合初始稀疏的数组。
+
+
+数组的大小：sizeof可以计算出数组的大小，单位是字节。
+1sizeof(a)/sizeof(a[0]);
+
+数组变量不能直接赋值，必须采用遍历的方法（唯一方法）。在for循环时，通常是从0到小于数组的长度，这样循环体内最大的i正好是数组最大的有效下标。切记不要离开循环之后，还继续用i做数组下标。
+
+数组作为函数参数时，往往必须再用另一个参数来传入数组的大小
+
+不能再[]中给出数组的大小；
+不能再利用sizeof来计算数组的元素个数；
+
+
+
+搜索
+定义：在一个数组中找到某个数的位置，基本方法是遍历。
+
+程序的 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/12/04/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B004/" title="算法刷题笔记04：有效的括号">算法刷题笔记04：有效的括号</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-04T12:17:13.650Z" title="发表于 2023-12-04 20:17:13">2023-12-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">有效的括号给定一个只包括 &#39;(&#39;，&#39;)&#39;，&#39;&#123;&#39;，&#39;&#125;&#39;，&#39;[&#39;，&#39;]&#39; 的字符串 s ，判断字符串是否有效。
+有效字符串需满足：
+
+左括号必须用相同类型的右括号闭合。
+左括号必须以正确的顺序闭合。
+每个右括号都有一个对应的相同类型的左括号。
+
+示例：
+12输入：s = &quot;()&quot;   &quot;(]&quot;输出：true false
+
+解题方法这道题需要判断括号左右是否匹配，里面涉及到一个嵌套的问题，要实现嵌套情况下的括号匹配，如果是这种情况，就需要栈进行实现，栈具有先进后出的属性，正好满足嵌套的实现要求。在C语言中没有栈的指定类，在这里可以采用数组实现。
+C语言实现
+123456789101112131415161718192021222324252627282930313233343536char pairs(char a)&#123;    if(a == &#x27;]&#x27;) return &#x27;[&#x27;;    if ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(06)/" title="C学习笔记06：数组与函数">C学习笔记06：数组与函数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-30T15:13:55.338Z" title="发表于 2023-11-30 23:13:55">2023-11-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/C/">C</a></span></div><div class="content">数组的知识点在程序中还是比较重要的，数组也是算法与数据结构中重要的一种数据存储结构，这篇文章，一起再温故一下吧。
+数组与函数数组
+定义：数组是长度固定的一种数据结构，用来存放指定类型的数据，这些数据具有相同类型，相似含义，相同生存空间的特性，是一种容器；
+12&lt;类型&gt; 变量名称[元素数量]；int grades[100];
+
+
+元素的数量必须是整数，C99之前，其具体数值必须在编译时刻确定；
+一旦创建，不能改变大小；
+
+
+操作
+123int number[100];  		 //定义数组number[cnt] = x;  		 //对数组元素赋值number[i] &gt; average;	 //使用数组的元素
+
+关于数据下标
+
+下标从0开始编号；
+
+编译器不会检查数据的越界的；要保证数组不能越界，其范围始终在[0,数组大小-1]范围内；
+
+为了保证数据存储不越界，可以在定义数组时写一个很大的元素数量,或者利用C99的特性，根据输入的数值，动态调整数组的大小。
+12scanf(&quot;%d&quot;,&amp;cnt);int number[cnt];
+
+
+可以定义 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/kun.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">surekun</div><div class="author-info__description">本博客是意在记录自己在嵌入式领域的各种总结与方法</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/surekun" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/17/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/" title="C学习笔记12：程序结构">C学习笔记12：程序结构</a><time datetime="2024-01-16T16:34:13.696Z" title="发表于 2024-01-17 00:34:13">2024-01-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(11)/" title="C学习笔记11：链表">C学习笔记11：链表</a><time datetime="2024-01-09T14:37:22.312Z" title="发表于 2024-01-09 22:37:22">2024-01-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(10)/" title="C学习笔记10：结构类型">C学习笔记10：结构类型</a><time datetime="2023-12-27T13:53:04.932Z" title="发表于 2023-12-27 21:53:04">2023-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B%EF%BC%9A%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(02)/" title="计算机组成原理学习笔记02：系统总线">计算机组成原理学习笔记02：系统总线</a><time datetime="2023-12-26T13:33:13.530Z" title="发表于 2023-12-26 21:33:13">2023-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B005/" title="算法刷题笔记05：合并两个有序的链表">算法刷题笔记05：合并两个有序的链表</a><time datetime="2023-12-26T11:30:17.419Z" title="发表于 2023-12-26 19:30:17">2023-12-26</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">Linux应用开发</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E7%B3%BB%E7%BB%9F/"><span class="card-category-list-name">Linux系统</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/RTOS/"><span class="card-category-list-name">RTOS</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B/"><span class="card-category-list-name">理论课程</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%A1%AC%E4%BB%B6%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">硬件开发</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/"><span class="card-category-list-name">算法</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"><span class="card-category-list-name">编程语言</span><span class="card-category-list-count">24</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%A3%B8%E6%9C%BA%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">裸机开发</span><span class="card-category-list-count">8</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/PCB%E7%BB%98%E5%88%B6/" style="font-size: 1.1em; color: #999">PCB绘制</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.4em; color: #99a5b6">数据结构</a> <a href="/tags/C/" style="font-size: 1.5em; color: #99a9bf">C</a> <a href="/tags/Linux%E5%91%BD%E4%BB%A4/" style="font-size: 1.2em; color: #999da3">Linux命令</a> <a href="/tags/C/" style="font-size: 1.5em; color: #99a9bf">C++</a> <a href="/tags/%E4%B8%B2%E5%8F%A3%E5%B1%8F/" style="font-size: 1.2em; color: #999da3">串口屏</a> <a href="/tags/CPU%E6%B8%A9%E5%BA%A6/" style="font-size: 1.1em; color: #999">CPU温度</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="font-size: 1.2em; color: #999da3">计算机组成原理</a> <a href="/tags/STM32/" style="font-size: 1.3em; color: #99a1ac">STM32</a> <a href="/tags/RT-Thread/" style="font-size: 1.1em; color: #999">RT-Thread</a> <a href="/tags/Prepar3D/" style="font-size: 1.2em; color: #999da3">Prepar3D</a> <a href="/tags/OpenMV/" style="font-size: 1.2em; color: #999da3">OpenMV</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><span class="card-archive-list-count">45</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">54</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-01-17T12:27:47.007Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By surekun</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["仰望星空，路在脚下"])
+  } else {
+    document.getElementById("subtitle").textContent = "仰望星空，路在脚下"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

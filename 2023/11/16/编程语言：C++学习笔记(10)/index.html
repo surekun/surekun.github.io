@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>C++学习笔记10：使用类 | The Blog of SureKun</title><meta name="author" content="surekun"><meta name="copyright" content="surekun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在上篇文章中，对类的声明进行了阐述，包含私有部分和公有部分，并且对面向对象编程进了探讨。这一篇文章将介绍友元函数、常见运算符的重载以及类的自动转换和强制类型转换等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++学习笔记10：使用类">
+<meta property="og:url" content="https://www.surekun.site/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(10)/index.html">
+<meta property="og:site_name" content="The Blog of SureKun">
+<meta property="og:description" content="在上篇文章中，对类的声明进行了阐述，包含私有部分和公有部分，并且对面向对象编程进了探讨。这一篇文章将介绍友元函数、常见运算符的重载以及类的自动转换和强制类型转换等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.surekun.site/img/kun.jpg">
+<meta property="article:published_time" content="2023-11-16T15:51:03.825Z">
+<meta property="article:modified_time" content="2023-11-18T15:49:03.182Z">
+<meta property="article:author" content="surekun">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.surekun.site/img/kun.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.surekun.site/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(10)/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C++学习笔记10：使用类',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-18 23:49:03'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/kun.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="The Blog of SureKun"><span class="site-name">The Blog of SureKun</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C++学习笔记10：使用类</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-16T15:51:03.825Z" title="发表于 2023-11-16 23:51:03">2023-11-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-18T15:49:03.182Z" title="更新于 2023-11-18 23:49:03">2023-11-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span id="" data-flag-title="C++学习笔记10：使用类"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>在上篇文章中，对类的声明进行了阐述，包含私有部分和公有部分，并且对面向对象编程进了探讨。这一篇文章将介绍友元函数、常见运算符的重载以及类的自动转换和强制类型转换等。</p>
+<span id="more"></span>
+<p>学习C++其实最大的困难现在随着学习内容的深入，也逐渐显露出来，就是C++需要您记录很多的东西。然后对于一个初学者并且没有经验的人来讲，要去记这些东西显然有些不现实。其实学习C++不是要用C++中所有的特性，而是要轻松地使用这门语言。</p>
+<h3 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h3><p>前面提到过函数重载，函数重载是指两个函数的名字是一致的，但是函数的入口参数和返回类型是不同的。程序会对这些函数进行重载。相比于函数重载，这里提出了运算符重载，允许C++的运算符有多种含义，例如*既可以表示地址，也可以表示两个数相乘，程序根据上下的关系情况进行判定。</p>
+<h4 id="运算符实例"><a href="#运算符实例" class="headerlink" title="运算符实例"></a>运算符实例</h4><p>现在有一个实例，是计算时间问题，时间包含分钟和小时两部分。通过相应的类成员函数相加求和。首先程序声明类并且对编写成员函数。在没有使用重载运算符的情况下，采用下面的代码进行求和运算。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="type">const</span> Time <span class="title">Sum</span><span class="params">(<span class="type">const</span> Time &amp; t)</span> <span class="type">const</span></span>;    <span class="comment">//在类中声明这个成员函数</span></span><br><span class="line"> ---------------------------------------------------------------------------------</span><br><span class="line"><span class="function"><span class="type">const</span> Time <span class="title">Time::Sum</span><span class="params">(<span class="type">const</span> Time &amp; t)</span> <span class="type">const</span>     <span class="comment">//对成员函数编写代码</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Time sum;      </span><br><span class="line">    sum.minutes = minutes + t.minutes;</span><br><span class="line">    sum.hours = hours + t.hours + sum.minutes / <span class="number">60</span>;</span><br><span class="line">    sum.minutes %= <span class="number">60</span>;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line">----------------------------------------------------------------------------------</span><br><span class="line"> total = coding.<span class="built_in">Sum</span>(fixing);      <span class="comment">//使用该成员函数将coding对象和fixing对象相加</span></span><br></pre></td></tr></table></figure>
+<p>如果没有成员运算符，我们可以根据上面的代码进行求和运算，其中函数返回的应该是类，而不是引用，如果是引用则是sum的临时变量，所以返回量的声明必须是一个类。入口参数是引用，而不是按值传递，这么做的原因在于提高效率。下面为程序添加加法运算符，更改后的程序代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Time <span class="keyword">operator</span>+(<span class="type">const</span> Time &amp; t) <span class="type">const</span>;    <span class="comment">//在类中声明这个成员函数</span></span><br><span class="line"> ---------------------------------------------------------------------------------</span><br><span class="line">Time Time::<span class="keyword">operator</span>+(<span class="type">const</span> Time &amp; t) <span class="type">const</span></span><br><span class="line">&#123;</span><br><span class="line">    Time sum;</span><br><span class="line">    sum.minutes = minutes + t.minutes;</span><br><span class="line">    sum.hours = hours + t.hours + sum.minutes / <span class="number">60</span>;</span><br><span class="line">    sum.minutes %= <span class="number">60</span>;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line">----------------------------------------------------------------------------------</span><br><span class="line"> total = coding + fixing;     <span class="comment">//coding和fixing相加</span></span><br><span class="line"> total = morefixing.<span class="keyword">operator</span>+(total);   <span class="comment">//fixing和total相加</span></span><br></pre></td></tr></table></figure>
+<p>运算符重载的一般格式为operator+()重载+运算符。operator是必须的，后面的是重载之后的符号。在使用过程中，既可以简单使用+符号进行运算，也可以使用原有的.格式。</p>
+<h4 id="重载限制"><a href="#重载限制" class="headerlink" title="重载限制"></a>重载限制</h4><p>下面来说一下重载限制问题,主要几点如下：</p>
+<ul>
+<li>重载后的运算符必须至少有一个操作数是用户定义的类型</li>
+<li>使用运算符时不能违反原有的语句规则</li>
+<li>不能创建新的运算符</li>
+<li>不能重载一些特殊的运算符，例如：sizeof等</li>
+</ul>
+<h3 id="友元函数"><a href="#友元函数" class="headerlink" title="友元函数"></a>友元函数</h3><h4 id="为什么需要友元函数"><a href="#为什么需要友元函数" class="headerlink" title="为什么需要友元函数"></a>为什么需要友元函数</h4><p>为探讨这个话题，我们可以看以下乘法运算符的重载问题，其乘法运算符的相关程序如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Time <span class="keyword">operator</span>*(<span class="type">double</span> n) <span class="type">const</span>;    <span class="comment">//在类中声明这个成员函数</span></span><br><span class="line"> ---------------------------------------------------------------------------------</span><br><span class="line">Time Time::<span class="keyword">operator</span>*(<span class="type">double</span> mult) <span class="type">const</span></span><br><span class="line">&#123;</span><br><span class="line">    Time result;</span><br><span class="line">    <span class="type">long</span> totalminutes = hours * mult * <span class="number">60</span> + minutes * mult;</span><br><span class="line">    result.hours = totalminutes / <span class="number">60</span>;</span><br><span class="line">    result.minutes = totalminutes % <span class="number">60</span>;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">----------------------------------------------------------------------------------</span><br><span class="line">adjusted = total * <span class="number">1.5</span>;      <span class="comment">// use operator+()</span></span><br></pre></td></tr></table></figure>
+<p>这个乘法运算有一个问题，以上的写法可以实现total乘以1.5，但是如果反过来写1.5*total那么程序计算的结构将出现问题，为什么有这个问题呢，因为在对成员函数定义时，左侧的操作数是调用的对象，但是2.75不是对象，所以会出现问题。解决这个问题有两种方案，一种是提前告知程序员，让程序员在编写程序时遵循这种方式，另外一种是使用非成员函数。但是非成员函数是无法访问隐藏变量的，这时C++提供了一种新的函数类型，这种函数被称为友元函数。</p>
+<h4 id="创建友元函数并使用"><a href="#创建友元函数并使用" class="headerlink" title="创建友元函数并使用"></a>创建友元函数并使用</h4><p>创建友元函数的第一步是将其原型放在类声明中，并且在原型中加上关键词friend,第二步是编写函数，因为不是成员函数，所以不需要使用Time::限定符，另外不需要再定义中使用关键词friend.最后就是使用友元函数。例如下面的乘法运算符重载：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">friend</span> Time <span class="keyword">operator</span> * (<span class="type">double</span> m,<span class="type">const</span> Time &amp; t);   <span class="comment">//声明</span></span><br><span class="line">----------------------------------------------------------------------------------</span><br><span class="line">Time <span class="keyword">operator</span>*(<span class="type">double</span> m,<span class="type">const</span> Time &amp; t)     <span class="comment">//函数原型</span></span><br><span class="line">&#123;</span><br><span class="line">    Time result;</span><br><span class="line">    <span class="type">long</span> totalminutes = t.hours * mult * <span class="number">60</span> + t.minutes * mult;</span><br><span class="line">    result.hours = totalminutes / <span class="number">60</span>;</span><br><span class="line">    result.minutes = totalminutes % <span class="number">60</span>;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">----------------------------------------------------------------------------------</span><br><span class="line">adjusted =  <span class="number">1.5</span> * total;      <span class="comment">// 有效运算</span></span><br></pre></td></tr></table></figure>
+<h3 id="类的自动转换和强制转换"><a href="#类的自动转换和强制转换" class="headerlink" title="类的自动转换和强制转换"></a>类的自动转换和强制转换</h3><p>在类的使用过程中，经常需要对变量进行转换，有些变换是自动进行的，而有些转换是强制进行的。构造函数在对变量进行声明时，可以自动进行隐式转换。使用关键词explicit将关闭构造函数的隐式转换，只能进行显示转换。</p>
+<h4 id="转换函数"><a href="#转换函数" class="headerlink" title="转换函数"></a>转换函数</h4><p>构造函数可以将数字转换成对象，但是如果将对象转换成数字，则采用转换函数。转换函数的一般定义格式如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">operator</span> <span class="title">typeName</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p>对于转换函数，需要注意以下几点：</p>
+<ul>
+<li>转换函数必须是类方法</li>
+<li>转换函数不能指定返回类型</li>
+<li>转换函数不能有参数</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本篇介绍了运算符重载、友元函数以及类型转换等问腿，对类的理解更加深了一步，学习完这些后，后面将继续以类为对象，学习类和动态内存分配。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.surekun.site">surekun</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.surekun.site/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(10)/">https://www.surekun.site/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(10)/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.surekun.site" target="_blank">The Blog of SureKun</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C/">C++</a></div><div class="post_share"><div class="social-share" data-image="/img/kun.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(11)/" title="C++学习笔记11：类和动态内存分配"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C++学习笔记11：类和动态内存分配</div></div></a></div><div class="next-post pull-right"><a href="/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(09)/" title="C++学习笔记09：对象和类"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C++学习笔记09：对象和类</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/11/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(01)/" title="C++学习笔记01：数据处理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-18</div><div class="title">C++学习笔记01：数据处理</div></div></a></div><div><a href="/2023/11/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(02)/" title="C++学习笔记02：复合类型（一）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-18</div><div class="title">C++学习笔记02：复合类型（一）</div></div></a></div><div><a href="/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(04)/" title="C++学习笔记04：循环和关系表达式"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-16</div><div class="title">C++学习笔记04：循环和关系表达式</div></div></a></div><div><a href="/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(03)/" title="C++学习笔记03：复合类型（二）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-16</div><div class="title">C++学习笔记03：复合类型（二）</div></div></a></div><div><a href="/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(05)/" title="C++学习笔记05：分支语句和逻辑运算符"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-16</div><div class="title">C++学习笔记05：分支语句和逻辑运算符</div></div></a></div><div><a href="/2023/11/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC++%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(06)/" title="C++学习笔记06：C++的编程模块"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-16</div><div class="title">C++学习笔记06：C++的编程模块</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/kun.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">surekun</div><div class="author-info__description">本博客是意在记录自己在嵌入式领域的各种总结与方法</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/surekun" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-number">1.</span> <span class="toc-text">运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.1.</span> <span class="toc-text">运算符实例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD%E9%99%90%E5%88%B6"><span class="toc-number">1.2.</span> <span class="toc-text">重载限制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">友元函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">为什么需要友元函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0%E5%B9%B6%E4%BD%BF%E7%94%A8"><span class="toc-number">2.2.</span> <span class="toc-text">创建友元函数并使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E8%87%AA%E5%8A%A8%E8%BD%AC%E6%8D%A2%E5%92%8C%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.</span> <span class="toc-text">类的自动转换和强制转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0"><span class="toc-number">3.1.</span> <span class="toc-text">转换函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/17/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/" title="C学习笔记12：程序结构">C学习笔记12：程序结构</a><time datetime="2024-01-16T16:34:13.696Z" title="发表于 2024-01-17 00:34:13">2024-01-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(11)/" title="C学习笔记11：链表">C学习笔记11：链表</a><time datetime="2024-01-09T14:37:22.312Z" title="发表于 2024-01-09 22:37:22">2024-01-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(10)/" title="C学习笔记10：结构类型">C学习笔记10：结构类型</a><time datetime="2023-12-27T13:53:04.932Z" title="发表于 2023-12-27 21:53:04">2023-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B%EF%BC%9A%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(02)/" title="计算机组成原理学习笔记02：系统总线">计算机组成原理学习笔记02：系统总线</a><time datetime="2023-12-26T13:33:13.530Z" title="发表于 2023-12-26 21:33:13">2023-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B005/" title="算法刷题笔记05：合并两个有序的链表">算法刷题笔记05：合并两个有序的链表</a><time datetime="2023-12-26T11:30:17.419Z" title="发表于 2023-12-26 19:30:17">2023-12-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By surekun</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://vercel-dun-mu.vercel.app/',
+      region: 'ap-beijing',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(init)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://vercel-dun-mu.vercel.app/',
+      region: 'ap-beijing',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+      
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

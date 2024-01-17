@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>OpenMV实践总结02：色块与AprilTag应用 | The Blog of SureKun</title><meta name="author" content="surekun"><meta name="copyright" content="surekun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这两天学校开学，事情比较杂，OpenMV的学习进度没有那么的快，在这半周当中，主要是实践学习了色块和AprilTag的应用。星瞳科技的教程还是比较详细的，IDE中也有对应的示例代码。这次主要就是对代码中的需要注意的进行下记录。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenMV实践总结02：色块与AprilTag应用">
+<meta property="og:url" content="https://www.surekun.site/2023/11/16/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5%EF%BC%9AOpenMV%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%9302/index.html">
+<meta property="og:site_name" content="The Blog of SureKun">
+<meta property="og:description" content="这两天学校开学，事情比较杂，OpenMV的学习进度没有那么的快，在这半周当中，主要是实践学习了色块和AprilTag的应用。星瞳科技的教程还是比较详细的，IDE中也有对应的示例代码。这次主要就是对代码中的需要注意的进行下记录。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.surekun.site/img/kun.jpg">
+<meta property="article:published_time" content="2023-11-16T15:51:03.901Z">
+<meta property="article:modified_time" content="2023-11-18T16:07:03.741Z">
+<meta property="article:author" content="surekun">
+<meta property="article:tag" content="OpenMV">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.surekun.site/img/kun.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.surekun.site/2023/11/16/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5%EF%BC%9AOpenMV%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%9302/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'OpenMV实践总结02：色块与AprilTag应用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-19 00:07:03'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/kun.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="The Blog of SureKun"><span class="site-name">The Blog of SureKun</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">OpenMV实践总结02：色块与AprilTag应用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-16T15:51:03.901Z" title="发表于 2023-11-16 23:51:03">2023-11-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-18T16:07:03.741Z" title="更新于 2023-11-19 00:07:03">2023-11-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5/">项目实践</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span id="" data-flag-title="OpenMV实践总结02：色块与AprilTag应用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>这两天学校开学，事情比较杂，OpenMV的学习进度没有那么的快，在这半周当中，主要是实践学习了色块和AprilTag的应用。星瞳科技的教程还是比较详细的，IDE中也有对应的示例代码。这次主要就是对代码中的需要注意的进行下记录。</p>
+<span id="more"></span>
+<h3 id="SD卡的使用"><a href="#SD卡的使用" class="headerlink" title="SD卡的使用"></a>SD卡的使用</h3><p>在OpenMV中大约提供了120KB的FLASH空间用于存储用户的脱机代码。这些对于正常存储程序空间是绰绰有余的，但是如果我们想用OpenMV去拍摄照片或者去录制视频，那么这个空间是远远不够的，这种情况下，我们就可以使用SD了，当SD卡插入后，就会去替代原先的FLASH空间。对于SD卡的相关参数，要求格式为FAT32，最大支持的容量为32GB。<br>使用方法为首先进行格式化，格式化之后，打开IDE软件，选择一个例程，选择工具，然后将打开的示例文件保存到OpenMV Cam 并且命名的格式为main.py.这样就好了</p>
+<h3 id="色块实践"><a href="#色块实践" class="headerlink" title="色块实践"></a>色块实践</h3><p>对于色块的实践，主要参考星瞳科技提供的教程进行学习实践即可。具体的方法我就不在过多的赘述，详情点击<a target="_blank" rel="noopener" href="https://book.openmv.cc/image/blob.html">寻找色块</a>，也可以打开IDE中对应的教程。在寻找色块中，常用的教程就是single_color_rgb565。这个例程是用于彩色单颜色识别的，也可以修改进行多颜色识别。在例程代码中需要注意以下几点：</p>
+<ol>
+<li>相机需要关闭白平衡和自动增益，关闭的代码如下：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sensor.set_auto_gain(<span class="literal">False</span>) <span class="comment"># must be turned off for color tracking</span></span><br><span class="line">sensor.set_auto_whitebal(<span class="literal">False</span>) <span class="comment"># must be turned off for color tracking</span></span><br></pre></td></tr></table></figure></li>
+<li>主要的函数为find_blobs()<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find_blobs([thresholds[threshold_index]], pixels_threshold=<span class="number">200</span>, area_threshold=<span class="number">200</span>, merge=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+对于该函数，几个常用的入口参数和出口参数如下：</li>
+</ol>
+<ul>
+<li>thresholds：颜色的阈值，可以理解为你要识别的颜色。注意这个颜色不是RGB值，是LAB值的最大和最小值。在LAB中，L表示亮度、a的正数表示红色，负数表示绿色、b的正数表示黄色，b的负数表示蓝色。总结起来就是L是负责亮度的调节，AB是负责颜色的平衡。<br>对于这6个数值如何取值，IDE中提供了两种常用的方法，一种是采用阈值调节器，打开的方法如下<br><img src="https://i.loli.net/2021/09/05/IySCm9UGZ7XAuzf.png" alt="image.png"><br>拖动下面的6个滑块，使上面你想识别的颜色显示为全白，其他部分的颜色显示为全黑，赋值下面的数字到程序中即可<br><img src="https://i.loli.net/2021/09/05/iHUsFIVa8Prp5ke.png" alt="image.png"><br>第二种方法是根据IED种的直方图，直接读出LAB的最大值和最小值，例如<br><img src="https://i.loli.net/2021/09/05/QZVSrcCFRktDguB.png" alt="image.png"><br>具体两种方法，哪种比较精准，我个人还是比较推荐先用第二种确定大概值，然后再用这个大概值使用第一种方法去调节。</li>
+<li>pixels_threshold：像素个数阈值，如果色块像素数量小于这个值，会被过滤掉</li>
+<li>area_threshold：面积阈值，如果色块被框起来的面积小于这个值，会被过滤掉</li>
+<li>merge：如果设置为True，那么合并所有重叠的blob为一个<br>几个常用的返回参数如下：</li>
+<li>blob.rotation()：返回色块的旋转角度</li>
+<li>blob.code() 返回的是如果是多个颜色识别，识别到的颜色代码。更多详细的参数请参考中文文档<br><a target="_blank" rel="noopener" href="https://docs.singtown.com/micropython/zh/latest/openmvcam/index.html">MicroPython 和 OpenMV Cam 中文文档</a></li>
+</ul>
+<h4 id="实践结果"><a href="#实践结果" class="headerlink" title="实践结果"></a>实践结果</h4><p><img src="https://i.loli.net/2021/09/05/6zPCvX9k12xbDm4.png" alt="image.png"><br>实践的现象如上图中所示，在上述的实践中，主要识别的颜色为红色，当识别到红色之后，用一个白色的框圈起。除了白色的框之外，还有红色的框，红色的框圈起的是红色像素点的区域，在红色框中有一个蓝色和绿色的线，分别代表主轴线和次轴线。以上三个方框的实现代码对应为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img.draw_edges(blob.min_corners(), color=(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>))</span><br><span class="line">img.draw_line(blob.major_axis_line(), color=(<span class="number">0</span>,<span class="number">255</span>,<span class="number">0</span>))</span><br><span class="line">img.draw_line(blob.minor_axis_line(), color=(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="AprilTag实践"><a href="#AprilTag实践" class="headerlink" title="AprilTag实践"></a>AprilTag实践</h3><p>OpenMV去识别颜色还是比较精准和简单的，初次之外，还有一个比较喜欢用OpenMV用的就是AprilTag.它是一个视觉基准系统，可用于各种任务，包括AR，机器人和相机校准。这个tag可以直接用打印机打印出来，而AprilTag检测程序可以计算相对于相机的精确3D位置，方向和id.Tag有很多的种类，我们常用的就是TAG36H11，ID值为0到586.<br>同样可以使用IDE中的AprilTag生成器去生成对应的TAG。生成的方法比较简单，生成之后，打印即可使用。<br><img src="https://i.loli.net/2021/09/05/rlSTuozJywWgYHq.png" alt="image.png"></p>
+<h4 id="代码理解"><a href="#代码理解" class="headerlink" title="代码理解"></a>代码理解</h4><p>AprilTag最常用的有两种方式，其中一种使用方式是去寻找TAG，另外一种使用的场景是TAG的3D定位。主要用的函数为find_apriltags(),寻找TAG的例子比较简单，在这里不做介绍，支队3D定位的代码进行分析。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">find_apriltags(fx=f_x, fy=f_y, cx=c_x, cy=c_y)</span><br><span class="line"><span class="comment"># f_x 是x的像素为单位的焦距。对于标准的OpenMV，应该等于2.8/3.984*656，这个值是用毫米为单位的焦距除以x方向的感光元件的长度，乘以x方向的感光元件的像素（OV7725）</span></span><br><span class="line"><span class="comment"># f_y 是y的像素为单位的焦距。对于标准的OpenMV，应该等于2.8/2.952*488，这个值是用毫米为单位的焦距除以y方向的感光元件的长度，乘以y方向的感光元件的像素（OV7725）</span></span><br><span class="line"><span class="comment"># c_x 是图像的x中心位置</span></span><br><span class="line"><span class="comment"># c_y 是图像的y中心位置</span></span><br></pre></td></tr></table></figure>
+<p>find_apriltags默认选择识别的Family为TAG35H11。fx&#x3D;f_x, fy&#x3D;f_y, cx&#x3D;c_x, cy&#x3D;c_y是根据不同的摄像头进行变化的。对于返回参数值，可以返回相对于相机的3D位置和方位信息。注意在这里是选取摄像头为坐标原点，其中tag.x_translation(), tag.y_translation(), tag.z_translation()分别代表以摄像头为原点的3D空间中TAG的X&#x2F;Y&#x2F;Z轴信息。tag.x_rotation()), degrees(tag.y_rotation()), degrees(tag.z_rotation()反应的是TAG相对于各自轴XYZ的旋转角度，注意这个是弧度，如果需要角度，需要去转换。除此之外，tag.id()代表的是别到的TAG的ID值。</p>
+<h4 id="实践结果-1"><a href="#实践结果-1" class="headerlink" title="实践结果"></a>实践结果</h4><p><img src="https://i.loli.net/2021/09/05/5ibuzdInYpm7R3c.png" alt="image.png"><br>如上图所示，TAG别成功识别到。在串行终端打印识别到的位置信息。对于XYZ轴的距离值，是实际的距离一一对应的。换算值大约需要乘27.在实际使用过程中，不需要进行相关的换算。可以根据三个轴的距离，利用勾股定理求出TAG到摄像头的直线距离。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上就是对于色块和TAG的识别的总结，更加详细的教程可以看星瞳的，讲的还是挺详细的。对于上述的识别，可以采用通过串口与其他单片机进行交互。从而完成更加复杂的功能任务。下周计划将第一版PCB版修改下，打印制作第二版OpenMV.初次之外，再实践下其他相关的代码。让我们一起进步吧~，每天进步一点点。加油！！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.surekun.site">surekun</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.surekun.site/2023/11/16/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5%EF%BC%9AOpenMV%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%9302/">https://www.surekun.site/2023/11/16/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5%EF%BC%9AOpenMV%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%9302/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.surekun.site" target="_blank">The Blog of SureKun</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/OpenMV/">OpenMV</a></div><div class="post_share"><div class="social-share" data-image="/img/kun.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/11/16/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5%EF%BC%9APrepar3D%E5%BC%80%E5%8F%91%E6%80%BB%E7%BB%9301/" title="Prepar3D开发总结01：模型与SDK"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Prepar3D开发总结01：模型与SDK</div></div></a></div><div class="next-post pull-right"><a href="/2023/11/16/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5%EF%BC%9AOpenMV%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%9301/" title="OpenMV实践总结01：HelloWorld"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">OpenMV实践总结01：HelloWorld</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/11/16/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5%EF%BC%9AOpenMV%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%9301/" title="OpenMV实践总结01：HelloWorld"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-16</div><div class="title">OpenMV实践总结01：HelloWorld</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/kun.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">surekun</div><div class="author-info__description">本博客是意在记录自己在嵌入式领域的各种总结与方法</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/surekun" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#SD%E5%8D%A1%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">SD卡的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%89%B2%E5%9D%97%E5%AE%9E%E8%B7%B5"><span class="toc-number">2.</span> <span class="toc-text">色块实践</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E8%B7%B5%E7%BB%93%E6%9E%9C"><span class="toc-number">2.1.</span> <span class="toc-text">实践结果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AprilTag%E5%AE%9E%E8%B7%B5"><span class="toc-number">3.</span> <span class="toc-text">AprilTag实践</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%90%86%E8%A7%A3"><span class="toc-number">3.1.</span> <span class="toc-text">代码理解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E8%B7%B5%E7%BB%93%E6%9E%9C-1"><span class="toc-number">3.2.</span> <span class="toc-text">实践结果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/17/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/" title="C学习笔记12：程序结构">C学习笔记12：程序结构</a><time datetime="2024-01-16T16:34:13.696Z" title="发表于 2024-01-17 00:34:13">2024-01-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(11)/" title="C学习笔记11：链表">C学习笔记11：链表</a><time datetime="2024-01-09T14:37:22.312Z" title="发表于 2024-01-09 22:37:22">2024-01-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(10)/" title="C学习笔记10：结构类型">C学习笔记10：结构类型</a><time datetime="2023-12-27T13:53:04.932Z" title="发表于 2023-12-27 21:53:04">2023-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B%EF%BC%9A%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(02)/" title="计算机组成原理学习笔记02：系统总线">计算机组成原理学习笔记02：系统总线</a><time datetime="2023-12-26T13:33:13.530Z" title="发表于 2023-12-26 21:33:13">2023-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B005/" title="算法刷题笔记05：合并两个有序的链表">算法刷题笔记05：合并两个有序的链表</a><time datetime="2023-12-26T11:30:17.419Z" title="发表于 2023-12-26 19:30:17">2023-12-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By surekun</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://vercel-dun-mu.vercel.app/',
+      region: 'ap-beijing',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(init)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://vercel-dun-mu.vercel.app/',
+      region: 'ap-beijing',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+      
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DWIN屏使用方法总结（下） | The Blog of SureKun</title><meta name="author" content="surekun"><meta name="copyright" content="surekun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="上一篇关于DWIN屏的总结学习中，描述了什么是DWIN屏以及这类串口屏幕在实际开发中的流程、相比于传统的LCD屏幕，这种屏幕有什么好的优点等等。这一篇呢，就是在上一篇的基础之上，对于屏幕在使用中的常用控件做简单的介绍，并阐述下用单片机程序如何解析与之相关的控件信息。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DWIN屏使用方法总结（下）">
+<meta property="og:url" content="https://www.surekun.site/2023/11/16/%E8%A3%B8%E6%9C%BA%E5%BC%80%E5%8F%91%EF%BC%9ADWIN%E5%B1%8F%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%E4%B8%8B/index.html">
+<meta property="og:site_name" content="The Blog of SureKun">
+<meta property="og:description" content="上一篇关于DWIN屏的总结学习中，描述了什么是DWIN屏以及这类串口屏幕在实际开发中的流程、相比于传统的LCD屏幕，这种屏幕有什么好的优点等等。这一篇呢，就是在上一篇的基础之上，对于屏幕在使用中的常用控件做简单的介绍，并阐述下用单片机程序如何解析与之相关的控件信息。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.surekun.site/img/kun.jpg">
+<meta property="article:published_time" content="2023-11-16T15:51:03.852Z">
+<meta property="article:modified_time" content="2023-11-18T16:08:36.563Z">
+<meta property="article:author" content="surekun">
+<meta property="article:tag" content="串口屏">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.surekun.site/img/kun.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.surekun.site/2023/11/16/%E8%A3%B8%E6%9C%BA%E5%BC%80%E5%8F%91%EF%BC%9ADWIN%E5%B1%8F%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%E4%B8%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'DWIN屏使用方法总结（下）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-19 00:08:36'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/kun.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="The Blog of SureKun"><span class="site-name">The Blog of SureKun</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">DWIN屏使用方法总结（下）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-16T15:51:03.852Z" title="发表于 2023-11-16 23:51:03">2023-11-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-18T16:08:36.563Z" title="更新于 2023-11-19 00:08:36">2023-11-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%A3%B8%E6%9C%BA%E5%BC%80%E5%8F%91/">裸机开发</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span id="" data-flag-title="DWIN屏使用方法总结（下）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>上一篇关于DWIN屏的总结学习中，描述了什么是DWIN屏以及这类串口屏幕在实际开发中的流程、相比于传统的LCD屏幕，这种屏幕有什么好的优点等等。这一篇呢，就是在上一篇的基础之上，对于屏幕在使用中的常用控件做简单的介绍，并阐述下用单片机程序如何解析与之相关的控件信息。</p>
+<span id="more"></span>
+<h3 id="数据帧"><a href="#数据帧" class="headerlink" title="数据帧"></a>数据帧</h3><p>屏幕默认选择串口2与外部设备进行通讯，在串行通讯的参数为：波特率&#x2F;115200 数据位&#x2F;8 奇偶校验&#x2F;无。在通讯过程中，采用的数据帧格式为：</p>
+<table>
+<thead>
+<tr>
+<th align="center">数据块</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">定义</td>
+<td align="center">帧头</td>
+<td align="center">数据长度</td>
+<td align="center">指令</td>
+<td align="center">数据</td>
+<td align="center">CRC校验</td>
+</tr>
+<tr>
+<td align="center">长度</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">&lt;&#x3D;249</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">说明</td>
+<td align="center">0x5aa5</td>
+<td align="center">指令+数据+CRC字节数</td>
+<td align="center">0x82&#x2F;83写&#x2F;读</td>
+<td align="center">用户命名</td>
+<td align="center">CRC-16(x16+x15+x2+1)</td>
+</tr>
+</tbody></table>
+<p>对于上述的数据帧来讲，一般来讲，不用开启CRC校验，另外在数据方面，详细的格式如下：<br><img src="https://i.loli.net/2021/08/15/gRIZ2AwsTiKQaDN.png" alt="image.png"><br>写的话就是目的变量空间地址+要写的数据，读的话就是读什么变量地址空间+读数据的长度。<br>举例说明<br>例如：发送5A A5 04 83 0014 01 收到5A A5 06 83 00 14 01 00 01；0001为页面ID。解析该发送指令如下：其中5A A5为固定的帧头，04代表指令+数据一共4个字节，指令83代表读，就是从变量地址中读数据，0014代表要读哪个变量地址，01表示：从0014 地址开始读 1 个字长度.返回的指令中附加的0001代表着当前的页面ID。</p>
+<h4 id="常用的系统指令"><a href="#常用的系统指令" class="headerlink" title="常用的系统指令"></a>常用的系统指令</h4><ul>
+<li>T5L复位：5A A5 07 82 0004 55AA 5AA5</li>
+<li>读页面ID：5A A5 04 83 0014 01</li>
+<li>开启触摸上传：5A A5 07 82 0080 5A 00 00 38，注意掉电失效</li>
+<li>页面切换：5A A5 07 82 00845A010001，0001代表要切换的ID</li>
+<li>读系统配置：5A A5 04 83 0080 02</li>
+</ul>
+<p>常用的系统指令大概也就以上几个，详细的请参考开发手册指南。</p>
+<h3 id="常用控件"><a href="#常用控件" class="headerlink" title="常用控件"></a>常用控件</h3><h4 id="基础触控"><a href="#基础触控" class="headerlink" title="基础触控"></a>基础触控</h4><p>基础触控相对来讲是一个比较简单的控件，主要的功能就是进行页面间的切换，不会产生返回值，没有相对应的变量地址空间，所以不能进行响应的读写。常用的案例就是导航栏的制作，在右面属性中，选择相应的背景ID，点击该触控区域后，即可切换到相应的ID界面。<br><img src="https://i.loli.net/2021/08/15/IAyW5SbdHcCBw3g.png" alt="image.png"></p>
+<h4 id="按键返回"><a href="#按键返回" class="headerlink" title="按键返回"></a>按键返回</h4><p>按键返回和基础触控很不相同，按键返回有自己的变量地址和变量地址中放的键值。勾选数据自动上传后，前提还要在系统的配置中开启数据自动上传，然后当我们点击该按键时，串口就会将该变量地址空间中存放的键值发送出来，图片中发出的指令为：5A A5 05 83 5346 0001.<br><img src="https://i.loli.net/2021/08/15/2etfMRvTzaGPdZJ.png" alt="image.png"><br>在程序中，就可以开启串口的接收中断，当接收到一帧数据后，对数据进行判断，主要是判断变量地址控制和相应的键值，来确定哪个按键按下。一般在设计当中，对于按键返回变量地址设置一样，判断返回的键值来确定哪个按键按下。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">if</span>(rxbuffer[<span class="number">4</span>] == <span class="number">0x20</span> &amp;&amp; rxbuffer[<span class="number">5</span>] == <span class="number">0x00</span>)  <span class="comment">//按键返回</span></span><br><span class="line">&#123;	  </span><br><span class="line">	 <span class="keyword">switch</span>( rxbuffer[<span class="number">8</span>])</span><br><span class="line">	&#123;</span><br><span class="line">		 <span class="keyword">case</span> <span class="number">0x10</span>:    <span class="comment">//按键10</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">/* User Code*/</span>  </span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">break</span>;</span><br><span class="line">         <span class="keyword">case</span> <span class="number">0x20</span>:    <span class="comment">//按键20</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">/* User Code*/</span>							</span><br><span class="line">		&#125;</span><br><span class="line">	    <span class="keyword">break</span>;</span><br><span class="line">        ....</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="数据变量录入"><a href="#数据变量录入" class="headerlink" title="数据变量录入"></a>数据变量录入</h4><p>数据变量的录入其实和按键返回有相似的地方，但是也有不一样的地方。变量录入不仅要加载DataInput的标签，而且需要加载一个变量显示的控件，变量的录入可以使用键盘，前提是键盘需要提前PS设计好。另外变量录入控件中的变量地址也就是你要把数据写到什么地方的地址，如果选中了数据自动上传，那么当这个变量地址中的数据发生变化时，该控件就会将这个变量地址中的数据通过串口发送出来。具体配置见下面图片设置。<br><img src="https://i.loli.net/2021/08/15/8CDuh2rJHkmPTWo.png" alt="image.png"></p>
+<h4 id="图标变量"><a href="#图标变量" class="headerlink" title="图标变量"></a>图标变量</h4><p>在UI界面中，如果想用更加华丽的效果展示，那就可以试试采用变量图标的这种形式。这种形式的前提在于你要提前利用PS将需要展示的图标设计好，然后生成48开头的图标文件。在背景图片中加载一个变量图标显示控件，在控件右侧的属性中，填写该控件的地址以及变化的范围。注意这两个值变量地址和返回是非常重要的。如果我们后续想更改这个控件图标的显示，只需要对该地址写入对应图标的键值即可。详细的指令为：0x5A,0xA5,0x05,0x82，0x3002,0x0001-0x0001.<br><img src="https://i.loli.net/2021/08/15/CvGailLNF3t589X.png" alt="image.png"></p>
+<h4 id="数据变量显示"><a href="#数据变量显示" class="headerlink" title="数据变量显示"></a>数据变量显示</h4><p>数据变量其实和变量图标差不多，图标变量需要指定也就是定义好键值对应的图标，而数据变量则是选择对应的字库，选择好要显示的位数等信息，同样的，数据变量也有相应的地址，通过相应的写入指令，在该地址中写入指定的值，即可显示相应的值。举例为：5A A5 05 82 54 20 00 12,将会在5420地址所对应的控件中显示0012.<br><img src="https://i.loli.net/2021/08/15/q9vBckxNFR2IfbZ.png" alt="image.png"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上就是目前来讲，我使用DWIN屏幕设计开发过程中的学习心得，明显能够感觉到使用DWIN屏幕开发越来越熟练，开发的效率和效果也越来越好。以上这些总结，希望在自己下次开发如果忘记了，能够快速回忆起来。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.surekun.site">surekun</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.surekun.site/2023/11/16/%E8%A3%B8%E6%9C%BA%E5%BC%80%E5%8F%91%EF%BC%9ADWIN%E5%B1%8F%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%E4%B8%8B/">https://www.surekun.site/2023/11/16/%E8%A3%B8%E6%9C%BA%E5%BC%80%E5%8F%91%EF%BC%9ADWIN%E5%B1%8F%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%E4%B8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.surekun.site" target="_blank">The Blog of SureKun</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%B8%B2%E5%8F%A3%E5%B1%8F/">串口屏</a></div><div class="post_share"><div class="social-share" data-image="/img/kun.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/11/16/Linux%E7%B3%BB%E7%BB%9F%EF%BC%9A%E8%81%8A%E8%81%8A%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4%E5%B8%AE%E5%8A%A9%E6%96%B9%E6%B3%95/" title="Linux学习随笔01：聊聊常用的命令帮助方法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Linux学习随笔01：聊聊常用的命令帮助方法</div></div></a></div><div class="next-post pull-right"><a href="/2023/11/16/%E8%A3%B8%E6%9C%BA%E5%BC%80%E5%8F%91%EF%BC%9ADWIN%E5%B1%8F%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%E4%B8%8A/" title="DWIN屏使用方法总结（上）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">DWIN屏使用方法总结（上）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/11/16/%E8%A3%B8%E6%9C%BA%E5%BC%80%E5%8F%91%EF%BC%9ADWIN%E5%B1%8F%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%E4%B8%8A/" title="DWIN屏使用方法总结（上）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-16</div><div class="title">DWIN屏使用方法总结（上）</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/kun.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">surekun</div><div class="author-info__description">本博客是意在记录自己在嵌入式领域的各种总结与方法</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/surekun" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%B8%A7"><span class="toc-number">1.</span> <span class="toc-text">数据帧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%8C%87%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">常用的系统指令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8E%A7%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">常用控件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%A7%A6%E6%8E%A7"><span class="toc-number">2.1.</span> <span class="toc-text">基础触控</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E9%94%AE%E8%BF%94%E5%9B%9E"><span class="toc-number">2.2.</span> <span class="toc-text">按键返回</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%8F%98%E9%87%8F%E5%BD%95%E5%85%A5"><span class="toc-number">2.3.</span> <span class="toc-text">数据变量录入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E6%A0%87%E5%8F%98%E9%87%8F"><span class="toc-number">2.4.</span> <span class="toc-text">图标变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%8F%98%E9%87%8F%E6%98%BE%E7%A4%BA"><span class="toc-number">2.5.</span> <span class="toc-text">数据变量显示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/17/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/" title="C学习笔记12：程序结构">C学习笔记12：程序结构</a><time datetime="2024-01-16T16:34:13.696Z" title="发表于 2024-01-17 00:34:13">2024-01-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(11)/" title="C学习笔记11：链表">C学习笔记11：链表</a><time datetime="2024-01-09T14:37:22.312Z" title="发表于 2024-01-09 22:37:22">2024-01-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%9AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(10)/" title="C学习笔记10：结构类型">C学习笔记10：结构类型</a><time datetime="2023-12-27T13:53:04.932Z" title="发表于 2023-12-27 21:53:04">2023-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/%E7%90%86%E8%AE%BA%E8%AF%BE%E7%A8%8B%EF%BC%9A%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(02)/" title="计算机组成原理学习笔记02：系统总线">计算机组成原理学习笔记02：系统总线</a><time datetime="2023-12-26T13:33:13.530Z" title="发表于 2023-12-26 21:33:13">2023-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/%E7%AE%97%E6%B3%95%EF%BC%9A%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B005/" title="算法刷题笔记05：合并两个有序的链表">算法刷题笔记05：合并两个有序的链表</a><time datetime="2023-12-26T11:30:17.419Z" title="发表于 2023-12-26 19:30:17">2023-12-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By surekun</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://vercel-dun-mu.vercel.app/',
+      region: 'ap-beijing',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(init)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://vercel-dun-mu.vercel.app/',
+      region: 'ap-beijing',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+      
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
